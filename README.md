@@ -23,7 +23,6 @@
         - [https://upmostly.com/tutorials/build-an-infinite-scroll-component-in-react-using-react-hooks](https://upmostly.com/tutorials/build-an-infinite-scroll-component-in-react-using-react-hooks)
         - [https://www.npmjs.com/package/react-infinite-scroller](https://www.npmjs.com/package/react-infinite-scroller)
         - [https://www.npmjs.com/package/react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component)
-        -
 - APP BREAKDOWN - WHITE BOARDING
     - Main
         - Feed
@@ -46,4 +45,4 @@
     - Inbox/Private Messages
     - Adding User Profiles with Information re Interests - Favorite Pokemon Favorite Video Game
     - Additional Profile View (of other users)
-- STEPS
+

@@ -1,4 +1,4 @@
-# pokemon-play-pen
+
 # POKEMON PLAY PEN
 
 - Requirements
@@ -45,4 +45,28 @@
     - Inbox/Private Messages
     - Adding User Profiles with Information re Interests - Favorite Pokemon Favorite Video Game
     - Additional Profile View (of other users)
+
+
+
+## Poke-Dex
+
+
+Poke-dex Schema
+
+     - name
+     - endpoint
+     - order
+
+
+poke reach endpoint
+
+     sprites.front_default
+     species.name
+     order
+     types
+     weight
+     height
+     abilities
+
+
 

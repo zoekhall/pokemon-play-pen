@@ -1,12 +1,15 @@
-const express = require('express');
-const { config } = require('webpack');
+const path = require('path');
+//const dotenv = require('dotenv');
+const MongoClient = require('mongodb').MongoClient;
 
 
-const app = express();
+// dotenv.config({
+//   path: path.resolve(__dirname, '../.env'),
+// });
+
+const { app } = require('./app');
+
 const PORT = 8080;
 
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
 
-
-app.listen(PORT, () => console.log(`Listening at localhost:${PORT}`) );
+app.listen(PORT, () => console.log(`Server listening on :${PORT}`));

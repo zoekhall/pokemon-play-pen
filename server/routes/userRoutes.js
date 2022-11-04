@@ -1,5 +1,5 @@
 const db = require('mongoose');
-const { obtainAllUsers } = require('../db/index.js');
+const { obtainAllUsers, createUser } = require('../db/index.js');
 const { Router } = require('express');
 const User = Router();
 
@@ -9,7 +9,11 @@ User.get('/', (req, res) => {
 });
 
 //post data to user schema to add a user
-
+User.post('/', (req, res) => {
+  //createUser()
+  console.log(req);
+  res.status(201).send();
+});
 
 // retrieve a user by its id 
 

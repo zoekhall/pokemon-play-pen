@@ -48,6 +48,10 @@ const obtainAllUsers = function() {
   userModel.find({});
 };
 
+const createUser = function(data) {
+  userModel.create(data);
+};
+
 module.exports = {
   deckModel,
   userModel,

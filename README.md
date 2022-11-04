@@ -11,6 +11,7 @@ can be used to search through for that great
 nostalgic feeling.
 
 ## Usecase
+
 A great place to evaluate your pokemon cards and to connect with others into the fandom.
 
 ## TechStack

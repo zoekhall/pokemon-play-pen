@@ -1,1 +1,4 @@
 node_modules
+client/bundle
+config.env
+

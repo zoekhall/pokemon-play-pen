@@ -1,4 +1,5 @@
 node_modules
 client/bundle
 config.env
-
+client/dist/main.bundle.js
+client/dist/main.bundle.js.LICENSE.txt

@@ -2,12 +2,8 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const clientID = '594164333356-4mh7nfte8udmjtlduk11vviq67ckmlip.apps.googleusercontent.com';
-const clientSecret = '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';
 const { User } = require('./routes/userRoutes.js');
 const CLIENT_PATH = path.resolve(__dirname, '../client/dist');
-const User1 = require('./index.js');
 
 
 const app = express();
@@ -23,6 +19,8 @@ app.use(passport.session());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use('/home', express.static(path.join(__dirname, '../client/dist')));
+//renders static page 
 // app.use(express.static(CLIENT_PATH));
 
 
@@ -37,13 +35,13 @@ app.get('/auth/google',
 
 app.get('/auth/google/callback',
   passport.authenticate('google', {
-    successRedirect: '/protected',
-    failureRedirect: '/auth/failure',
+    successRedirect: '/home',
+    // failureRedirect: '/auth/failure',
   })
 );
 
-app.get('/protected', (req, res) => {
-  res.send('Hello');
+app.get('/home', (req, res) => {
+  // res.redirect('client/dist/index');
 });
 
 app.get('/auth/failure', (req, res) => {

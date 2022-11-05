@@ -40,9 +40,6 @@ app.get('/auth/google/callback',
   })
 );
 
-app.get('/home', (req, res) => {
-  // res.redirect('client/dist/index');
-});
 
 app.get('/auth/failure', (req, res) => {
   res.send('Something went wrong');

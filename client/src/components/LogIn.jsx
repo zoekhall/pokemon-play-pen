@@ -3,24 +3,24 @@ import React from 'react';
 //name attribute should align with schema?? 
 
 
-const Signin = () => {
+const Signup = () => {
   return (
     <div>
-      <form action="action_page.php" style="border:1px solid #ccc">
+      <form >
         <h1>Prepare Your Play Pen!</h1>
         <p>Please fill in this form to create an account</p>
         <label>
-          <span>Username</span>
+          <span>Username:</span>
           <input type="text" name="username" required/>
         </label>
         <label>
-          <span>Username</span>
-          <input type="text" name="username" required/>
+          <span>Password:</span>
+          <input type="password" name="password" required/>
         </label>
         <label>
-          <span>Username</span>
-          <input type="text" name="username" required/>
-        </label>        
+          <span>Favorite Pokemon:</span>
+          <input type="text" name="favPokemon" required/>
+        </label>
       </form>
     </div>
   );

@@ -20,7 +20,7 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/home', express.static(path.join(__dirname, '../client/dist')));
-//renders static page 
+//renders static page
 // app.use(express.static(CLIENT_PATH));
 
 

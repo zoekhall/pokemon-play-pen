@@ -4,12 +4,8 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const findOrCreate = require('mongoose-findorcreate');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const clientID = '594164333356-4mh7nfte8udmjtlduk11vviq67ckmlip.apps.googleusercontent.com';
-const clientSecret = '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';
+require('dotenv').config();
 
-// const GoogleStrategy = require('passport-google-oauth20').Strategy;
-// const clientID = '594164333356-4mh7nfte8udmjtlduk11vviq67ckmlip.apps.googleusercontent.com';
-// const clientSecret = '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';
 const session = require('express-session');
 
 
@@ -58,10 +54,10 @@ const deckSchema = new Schema({
   cardId: String,
   userId: String
 });
-
+//hello
 passport.use(new GoogleStrategy({
-  clientID: clientID,
-  clientSecret: clientSecret,
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   callbackURL: 'http://localhost:8080/auth/google/callback',
 },
 function (accessToken, refreshToken, profile, cb) {

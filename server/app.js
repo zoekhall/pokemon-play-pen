@@ -22,13 +22,15 @@ const isLoggedIn = (req, res, next) => {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use('/login', express.static(path.join(__dirname, '../client/dist/login')));
 app.use('/home', isLoggedIn, express.static(path.join(__dirname, '../client/dist')));
 //renders static page
 // app.use(express.static(CLIENT_PATH));
 
 
-app.get('/', (req, res) => {
-  res.send('<a href="/auth/google"> Authenticate with Google</a>');
+app.get('/', (req, res) => {  
+  res.redirect('/login');
+  // res.send('<a href="/auth/google"> Authenticate with Google</a>');
 });
 
 app.get('/auth/google',

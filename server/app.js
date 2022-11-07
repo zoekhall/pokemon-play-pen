@@ -6,6 +6,7 @@ const { User } = require('./routes/userRoutes.js');
 const CLIENT_PATH = path.resolve(__dirname, '../client/dist');
 
 
+
 const app = express();
 app.use(session({
   secret: 'Our little secret.',
@@ -15,14 +16,15 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+const isLoggedIn = (req, res, next) => {
+  req.user ? next() : res.redirect('/');
+};
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use('/home', express.static(path.join(__dirname, '../client/dist')));
+app.use('/home', isLoggedIn, express.static(path.join(__dirname, '../client/dist')));
 //renders static page
 // app.use(express.static(CLIENT_PATH));
-
 
 
 app.get('/', (req, res) => {
@@ -36,10 +38,13 @@ app.get('/auth/google',
 app.get('/auth/google/callback',
   passport.authenticate('google', {
     successRedirect: '/home',
-    // failureRedirect: '/auth/failure',
+    failureRedirect: '/',
   })
 );
 
+app.get('/home', isLoggedIn, (req, res) => {
+  console.log(req);
+});
 
 app.get('/auth/failure', (req, res) => {
   res.send('Something went wrong');

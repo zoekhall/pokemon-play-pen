@@ -19,6 +19,7 @@ mongoose.connect(mongoUri)
 
 
 const userSchema = new Schema({
+  _id: Number,
   username: {
     type: String,
     require: true,
@@ -28,8 +29,6 @@ const userSchema = new Schema({
     type: String,
     require: true,
   },
-  googleId: String,
-  secret: String,
   deckId: String,
   favPokemon: String,
 });
@@ -63,9 +62,9 @@ passport.use(new GoogleStrategy({
 },
 function (accessToken, refreshToken, profile, cb) {
   User.findOrCreate({
-    googleId: profile.id,
+    _id: profile.id,
     username: profile.displayName,
-    password: profile.emails.value
+    password: profile._json.email
   }, function (err, user) {
     console.log(profile);
 

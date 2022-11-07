@@ -59,7 +59,7 @@ const User = mongoose.model('User', userSchema);
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: 'http://localhost:8080/auth/google/callback',
+  callbackURL: process.env.CALLBACK_URL,
 },
 function (accessToken, refreshToken, profile, cb) {
   User.findOrCreate({
@@ -89,17 +89,10 @@ passport.deserializeUser(function (id, done) {
 
 
 
-const obtainAllUsers = function () {
-  userModel.find({});
-};
 
-const createUser = function (data) {
-  userModel.create(data);
-};
 
 module.exports = {
   deckModel,
   User,
   chatModel,
-  obtainAllUsers
 };

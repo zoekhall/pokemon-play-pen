@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Switch, Routes, Route, Link } from 'react-router';
 import Profile from './userProfiles/profile.jsx';
 import Collection from './cardCollection/collection.jsx';
 import MarketPlace from './marketPlace/marketPlace.jsx';
 import Pokedex from './pokedex/pokedex.jsx';
 import Inbox from './inbox/inbox.jsx';
+
 
 const App = () => {
 
@@ -13,7 +15,7 @@ const App = () => {
 
   const renderView = () => { //create a method that renders different state views -- pokedex, marketPlace, inbox, cardCollection, profile
     if (view === 'marketPlace') { //if the state is equal to this string - then return the corresponding component
-      return <MarketPlace />;  
+      return <MarketPlace />;
     } else if (view === 'collection') {
       return <Collection />;
     } else if (view === 'pokedex') {
@@ -25,7 +27,7 @@ const App = () => {
     }
   };
 
-  console.log(view);
+  // console.log(view);
   return (
     <div>
       <div>
@@ -64,6 +66,23 @@ const App = () => {
     </div>
   );
 };
+
+// const App = () => {
+//   return (
+//     <BrowserRouter>
+//       <div>
+//         <nav>
+//           <Link to='/home'>Profile </Link>
+//         </nav>
+//         <main>
+//           <Routes>
+//             <Route path='/home' element={<Profile />} exact />
+//           </Routes>
+//         </main>
+//       </div>
+//     </BrowserRouter>
+//   );
+// };
 
 export default App;
 

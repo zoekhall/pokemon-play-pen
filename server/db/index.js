@@ -20,6 +20,8 @@ mongoose.connect(mongoUri)
 
 const userSchema = new Schema({
   _id: Number,
+  firstName: String,
+  lastName: String,
   username: {
     type: String,
     require: true,
@@ -31,6 +33,7 @@ const userSchema = new Schema({
   },
   deckId: String,
   favPokemon: String,
+  avatar: String,
 });
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
@@ -64,9 +67,13 @@ function (accessToken, refreshToken, profile, cb) {
   User.findOrCreate({
     _id: profile.id,
     username: profile.displayName,
-    password: profile._json.email
+    password: profile._json.email,
+    firstName: profile._json.given_name,
+    lastName: profile._json.family_name,
+    avatar: profile._json.picture
+
   }, function (err, user) {
-    console.log(profile);
+    //console.log(profile);
 
     return cb(err, user);
   });

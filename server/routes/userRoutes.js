@@ -8,9 +8,13 @@ User.get('/current', (req, res) => {
   //console.log(req);
   res.status(200).send(req.user);
 });
+User.get('/', (req, res) => {
+  console.log(req);
+  res.status(200).send(req.user);
+});
 
 User.get('/findUser', (req, res)=>{
-  //console.log(req);
+  console.log(req);
   const user = req.query.name;
   const foundUser = findUser(user);
   if (foundUser) {
@@ -18,6 +22,7 @@ User.get('/findUser', (req, res)=>{
   } else {
     res.sendStatus(500);
   }
+
 });
 
 

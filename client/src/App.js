@@ -18,7 +18,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Profile />} />
-          <Route path="inbox" element={<Inbox />} />
+          <Route path="inbox" element={<Inbox/>} />
           <Route path="marketPlace" element={<MarketPlace />} />
           <Route path="pokedex" element={<Pokedex />} />
           <Route path="collection" element={<Collection />} />

@@ -12,7 +12,7 @@ const Compose = () => {
     <div>
       <form>
         <input type="text" />
-        <button onClick={searchUsers}>SEARCH</button>
+        <button onClick={ searchUsers }>SEARCH</button>
       </form>
 
     </div>

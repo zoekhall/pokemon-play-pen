@@ -5,11 +5,12 @@ const InfoSect = ({ id }) => {
   const [profile, setProfile] = useState({});
 
   const retriveIdData = () => {
-    if (id === undefined) {
-      axios.get('/api/current/user')
+    if (id === undefined) { // if no id from another is inputted
+      axios.get('/api/user/current') // then just return YOU the current user data
         .then(data => { setProfile(data.data); console.log(data.data); })
         .catch(err => console.log(err, 'ERROR ON GET CURRENT USER'));
     }
+
   };
 
   useEffect(retriveIdData, []);

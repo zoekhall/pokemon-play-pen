@@ -4,7 +4,7 @@ const { Router } = require('express');
 const User = Router();
 
 //retrieve all user data from schema
-User.get('/', (req, res) => {
+User.get('/current', (req, res) => {
   //console.log(req);
   res.status(200).send(req.user);
 });

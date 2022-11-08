@@ -28,7 +28,7 @@ app.use('/home', isLoggedIn, express.static(path.join(__dirname, '../client/dist
 // app.use(express.static(CLIENT_PATH));
 
 
-app.get('/', (req, res) => {  
+app.get('/', (req, res) => {
   res.redirect('/login');
   // res.send('<a href="/auth/google"> Authenticate with Google</a>');
 });
@@ -45,7 +45,7 @@ app.get('/auth/google/callback',
 );
 
 app.get('/home', isLoggedIn, (req, res) => {
-  console.log(req);
+  //console.log(req);
 });
 
 app.get('/auth/failure', (req, res) => {
@@ -62,7 +62,7 @@ app.get('/logout', function (req, res) {
   res.redirect('http://localhost:8080/');
 });
 
-app.use('/api/user', User);
+app.use('/api/current/user', User);
 
 
 module.exports = {

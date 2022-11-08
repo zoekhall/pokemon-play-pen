@@ -27,10 +27,8 @@ app.use('/login', express.static(path.join(__dirname, '../client/dist/login')));
 app.use('/home', isLoggedIn, express.static(path.join(__dirname, '../client/dist')));
 
 
-
 app.get('/', (req, res) => {
   res.redirect('/login');
-
 });
 
 app.get('/auth/google',
@@ -57,7 +55,11 @@ app.get('/auth/failure', (req, res) => {
 app.get('/logout', function (req, res) {
   res.redirect('http://localhost:8080/');
 });
+app.get('/api', (req, res)=>{
+  console.log('hit');
+  res.sendStatus(200);
 
+});
 app.use('/api/user', User);
 
 app.use('/api/deck', Deck);

@@ -1,5 +1,5 @@
 import React from 'react';
-import InfoSect from './infoSect.jsx'; 
+import InfoSect from './infoSect.js';
 
 const Profile = (props) => {
   return (
@@ -10,4 +10,4 @@ const Profile = (props) => {
   );
 };
 
-export default Profile; 
+export default Profile;

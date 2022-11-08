@@ -9,12 +9,14 @@ const createUser = function (data) {
   User.create(data);
 };
 
-const obtainOneUser = function(id) {
-  User.findById(id);
+const findUser = user => {
+  User.findOne({firstName: user})
+    .then(data=> console.log(data));
 };
+
 
 module.exports = {
   obtainAllUsers,
   createUser,
-  obtainOneUser
+  findUser
 };

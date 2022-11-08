@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const InfoSect = () => {
-  const [profile, profileChange] = useState({});
-  
-  useEffect(() => {
-    axios.get('/api/current/user')
-      .then(data => console.log(data, 'USE EFFEC'))
-      .catch(err => console.log(err, 'ERROR ON GET CURRENT USER'));
-  });
+const InfoSect = ({ id }) => {
+  const [profile, setProfile] = useState({});
+
+  const retriveIdData = () => {
+    if (id === undefined) {
+      axios.get('/api/current/user')
+        .then(data => { setProfile(data.data); console.log(data.data); })
+        .catch(err => console.log(err, 'ERROR ON GET CURRENT USER'));
+    }
+  };
+
+  useEffect(retriveIdData, []);
+
 
   return (
     <div>
-      Your Picture:
-      Your Username:
-      Your Description:
+      Your Username: {profile.username}
+      Your Description: 
     </div>
   );
 };

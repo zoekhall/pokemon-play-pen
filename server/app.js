@@ -57,7 +57,7 @@ app.get('/logout', function (req, res) {
   res.redirect('http://localhost:8080/');
 });
 
-app.use('/api/user', User);
+app.use('/api/current/user', User);
 
 
 module.exports = {

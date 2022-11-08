@@ -1,9 +1,11 @@
 import React from 'react';
+import InfoSect from './infoSect.jsx'; 
 
-const Profile = () => {
+const Profile = (props) => {
   return (
     <div>
-      PROFILE!!!
+      <InfoSect id={props.id}/>
+      profiless
     </div>
   );
 };

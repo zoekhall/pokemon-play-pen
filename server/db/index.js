@@ -69,10 +69,10 @@ function (accessToken, refreshToken, profile, cb) {
     password: profile._json.email,
     firstName: profile._json.given_name,
     lastName: profile._json.family_name,
-    avatar: profile._json.picture
+    avatar: profile._json['picture']
 
   }, function (err, user) {
-    //console.log(profile);
+    console.log(profile);
 
     return cb(err, user);
   });

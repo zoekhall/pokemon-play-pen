@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
-const { CurrentUser } = require('./routes/userRoutes.js');
+const { User } = require('./routes/userRoutes.js');
 const CLIENT_PATH = path.resolve(__dirname, '../client/dist');
 
 
@@ -57,7 +57,7 @@ app.get('/logout', function (req, res) {
   res.redirect('http://localhost:8080/');
 });
 
-app.use('/api/current/user', CurrentUser);
+app.use('/api/user', User);
 
 
 module.exports = {

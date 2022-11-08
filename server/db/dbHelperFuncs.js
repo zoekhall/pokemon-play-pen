@@ -9,9 +9,10 @@ const createUser = function (data) {
   User.create(data);
 };
 
-const findUser = user => {
-  User.findOne({firstName: user})
-    .then(data=> console.log(data));
+const findUser = (user, cb) => {
+  User.find({username: { $regex: `${user}`}})
+    .then(foundUsers=> cb(foundUsers))
+    .catch(err => console.log(err));
 };
 
 

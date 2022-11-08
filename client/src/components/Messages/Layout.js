@@ -1,26 +1,19 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 
-
 const Layout = () => {
   return (
     <>
       <nav>
         <ul>
           <li>
-            <Link to="/">Profile</Link>
+            <Link to="/inbox">Inbox</Link>
           </li>
           <li>
-            <Link to="/messages">Messages</Link>
+            <Link to="/search">Search</Link>
           </li>
           <li>
-            <Link to="/marketPlace">Market Place</Link>
-          </li>
-          <li>
-            <Link to="/pokedex">Poke-dex</Link>
-          </li>
-          <li>
-            <Link to="/collection">Collection</Link>
+            <Link to="/sent">Sent</Link>
           </li>
         </ul>
       </nav>

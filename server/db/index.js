@@ -33,6 +33,7 @@ const userSchema = new Schema({
   deckId: String,
   favPokemon: String,
   avatar: String,
+  description: String,
 });
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
@@ -72,7 +73,7 @@ function (accessToken, refreshToken, profile, cb) {
     avatar: profile._json['picture']
 
   }, function (err, user) {
-    console.log(profile);
+    //console.log(profile);
 
     return cb(err, user);
   });

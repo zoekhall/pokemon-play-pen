@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
+
 
 const Collection = () => {
+
+  useEffect(() => {
+    axios.get('/api/deck', { params: { q: 'Charizard' } });
+    // .then(data => console.log(data));
+  }, []);
+
   return (
     <div>
       CARDCOLLECTION!!!
@@ -8,4 +16,4 @@ const Collection = () => {
   );
 };
 
-export default Collection; 
+export default Collection;

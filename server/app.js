@@ -3,6 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
 const { User } = require('./routes/userRoutes.js');
+const { Deck } = require('./routes/deckRoutes.js');
 const CLIENT_PATH = path.resolve(__dirname, '../client/dist');
 
 
@@ -59,6 +60,7 @@ app.get('/logout', function (req, res) {
 
 app.use('/api/current/user', User);
 
+app.use('/api/deck', Deck);
 
 module.exports = {
   app,

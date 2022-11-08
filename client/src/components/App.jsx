@@ -27,62 +27,33 @@ const App = () => {
     }
   };
 
-  // console.log(view);
   return (
     <div>
       <div>
         <span
           className={view === 'profile' ? 'selected' : 'unselected'} //assign class name based on view state
           onClick={() => changeView('profile')} //set the state to this section
-        >
-          Profile
-        </span>
+        > Profile </span>
         <span
           className={view === 'collection' ? 'selected' : 'unselected'} //assign class name based on view state
           onClick={() => changeView('collection')} //set the state to this section
-        >
-          Collection
-        </span>
+        > Collection </span>
         <span
           className={view === 'inbox' ? 'selected' : 'unselected'} //assign class name based on view state
           onClick={() => changeView('inbox')} //set the state to this section
-        >
-          Inbox
-        </span>
+        > Inbox </span>
         <span
           className={view === 'marketPlace' ? 'selected' : 'unselected'} //assign class name based on view state
           onClick={() => changeView('marketPlace')} //set the state to this section
-        >
-          Market Place
-        </span>
+        > Market Place </span>
         <span
           className={view === 'pokedex' ? 'selected' : 'unselected'} //assign class name based on view state
           onClick={() => changeView('pokedex')} //set the state to this section
-        >
-          Pokedex
-        </span>     
+        > Pokedex </span>
       </div>
       <div className='currentView'>{renderView()}</div>
     </div>
   );
 };
 
-// const App = () => {
-//   return (
-//     <BrowserRouter>
-//       <div>
-//         <nav>
-//           <Link to='/home'>Profile </Link>
-//         </nav>
-//         <main>
-//           <Routes>
-//             <Route path='/home' element={<Profile />} exact />
-//           </Routes>
-//         </main>
-//       </div>
-//     </BrowserRouter>
-//   );
-// };
-
 export default App;
-

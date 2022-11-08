@@ -24,13 +24,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/login', express.static(path.join(__dirname, '../client/dist/login')));
 app.use('/home', isLoggedIn, express.static(path.join(__dirname, '../client/dist')));
-//renders static page
-// app.use(express.static(CLIENT_PATH));
+
 
 
 app.get('/', (req, res) => {
   res.redirect('/login');
-  // res.send('<a href="/auth/google"> Authenticate with Google</a>');
+
 });
 
 app.get('/auth/google',
@@ -45,24 +44,20 @@ app.get('/auth/google/callback',
 );
 
 app.get('/home', isLoggedIn, (req, res) => {
-  //console.log(req);
+
 });
 
 app.get('/auth/failure', (req, res) => {
   res.send('Something went wrong');
 });
-// app.get('/auth/google/callback',
-//   passport.authenticate('google', { failureRedirect: 'http://localhost:8080' }),
-//   function (req, res) {
-//     res.redirect('http://localhost:8080');
-//   });
+
 
 
 app.get('/logout', function (req, res) {
   res.redirect('http://localhost:8080/');
 });
 
-app.use('/api/current/user', User);
+app.use('/api/user', User);
 
 
 module.exports = {

@@ -4,9 +4,8 @@ const session = require('express-session');
 const passport = require('passport');
 const { User } = require('./routes/userRoutes.js');
 const { Deck } = require('./routes/deckRoutes.js');
+const { Pokedex } = require('./routes/pokedexRoutes.js');
 const CLIENT_PATH = path.resolve(__dirname, '../client/dist');
-
-
 
 const app = express();
 app.use(session({
@@ -61,7 +60,7 @@ app.get('/api', (req, res)=>{
 
 });
 app.use('/api/user', User);
-
+app.use('/api/pokedex', Pokedex);
 app.use('/api/deck', Deck);
 
 module.exports = {

@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const Compose = () => {
-
+// func to search for users to message
 
   return (
     <div>
@@ -10,6 +10,7 @@ const Compose = () => {
         <input type="text" />
         <button>SEARCH</button>
       </form>
+        
     </div>
   );
 };

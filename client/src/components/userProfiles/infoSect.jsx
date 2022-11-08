@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Profile from './profile.jsx';
 
 const InfoSect = ({ id }) => {
   const [profile, setProfile] = useState({});
@@ -18,8 +19,9 @@ const InfoSect = ({ id }) => {
 
   return (
     <div>
-      Your Username: {profile.username}
-      Your Description: 
+      Your Username: {profile.username} <br/>
+      Your Description: <br/>
+      A friend for testing: 
     </div>
   );
 };

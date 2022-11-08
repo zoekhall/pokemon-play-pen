@@ -9,8 +9,12 @@ const createUser = function (data) {
   User.create(data);
 };
 
+const obtainOneUser = function(id) {
+  User.findById(id);
+};
 
 module.exports = {
   obtainAllUsers,
-  createUser
+  createUser,
+  obtainOneUser
 };

@@ -1,7 +1,10 @@
+// needed React things
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
+// Components
+import Compose from './compose.jsx';
+import Layout from './layout.jsx';
 
 import axios from 'axios';
 
@@ -12,7 +15,7 @@ const Inbox = () => {
 
   //function to get current user !!!!!!!!may not need
   const getCurUser = ()=>{
-
+    axios.get('/api/user');
   };
 
   // func to search for users to message
@@ -25,11 +28,7 @@ const Inbox = () => {
 
   return (
     <div>
-      <BrowserRouter>
-        <Routes>
-          <Route></Route>
-        </Routes>
-      </BrowserRouter>
+      <button onClick={()=>getCurUser()}>test</button>
     </div>
   );
 };

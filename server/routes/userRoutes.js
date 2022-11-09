@@ -13,20 +13,18 @@ User.get('/:id', (req, res) => { // get the user at the specified id
   //console.log(req);
   res.status(200).send(findUserById(req.params.id)); // sends an object of the user id => { id: 12345678900000 }
 });
-User.get('/', (req, res) => {
-  console.log(req);
-  res.status(200).send(req.user);
-});
+
 
 User.get('/findUser', (req, res)=>{
-  console.log(req);
+  //console.log(req.query.name);
   const user = req.query.name;
-  const foundUser = findUser(user);
-  if (foundUser) {
-    res.status(200).send(foundUser);
-  } else {
-    res.sendStatus(500);
-  }
+  findUser(user, (returnedUsers)=>{
+    if (returnedUsers.length) {
+      res.status(200).send(returnedUsers);
+    } else {
+      res.sendStatus(500);
+    }
+  });
 
 });
 

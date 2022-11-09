@@ -1,12 +1,17 @@
 const db = require('mongoose');
-const { obtainAllUsers, createUser, findUser } = require('../db/dbHelperFuncs.js');
+const { obtainAllUsers, createUser, findUser, findUserById, changeUsername } = require('../db/dbHelperFuncs.js');
 const { Router } = require('express');
 const User = Router();
 
 //retrieve all user data from schema
-User.get('/current', (req, res) => {
+User.get('/current', (req, res) => { // get the currently logged in user
   //console.log(req);
-  res.status(200).send(req.user);
+  res.status(200).send(req.user); // sends the google auth object from passport
+});
+
+User.get('/:id', (req, res) => { // get the user at the specified id
+  //console.log(req);
+  res.status(200).send(findUserById(req.params.id)); // sends an object of the user id => { id: 12345678900000 }
 });
 User.get('/', (req, res) => {
   console.log(req);
@@ -25,10 +30,16 @@ User.get('/findUser', (req, res)=>{
 
 });
 
+User.patch('/name', (req, res) => {
+  console.log(req.user);
+  changeUsername(req.user._id);
+  res.status(201).send('name changed');
+});
+
 
 
 //post data to user schema to add a user
-User.post('/', (req, res) => {
+User.post('/', (req, res) => { // adds a user to the database useing the google auth object (i would hope)
   //createUser()
   //console.log(req);
   res.status(201).send();

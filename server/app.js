@@ -43,7 +43,7 @@ app.get('/auth/google/callback',
 );
 
 app.get('/home', isLoggedIn, (req, res) => {
-
+ 
 });
 
 app.get('/auth/failure', (req, res) => {

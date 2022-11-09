@@ -42,14 +42,11 @@ app.get('/auth/google/callback',
 );
 
 app.get('/home', isLoggedIn, (req, res) => {
-
 });
 
 app.get('/auth/failure', (req, res) => {
   res.send('Something went wrong');
 });
-
-
 
 app.get('/logout', function (req, res) {
   res.redirect('http://localhost:8080/');

@@ -23,7 +23,7 @@ const App = () => {
           <Route path='messages/inbox' element={< Inbox/>} />
           <Route path='messages/search' element={< Search/>} />
           <Route path='messages/sent' element={< Sent/>} />
-          <Route path='/compose' element={<Compose/>}/>
+          <Route path='compose:id' element={<Compose/>}/>
           <Route path="marketPlace" element={<MarketPlace />} />
           <Route path="pokedex" element={<Pokedex />} />
           <Route path="collection" element={<Collection />} />

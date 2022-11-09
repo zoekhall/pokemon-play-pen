@@ -11,7 +11,7 @@ const FoundUsers = props => {
         {props.user.firstName} {props.user.lastName}
       </p>
       <p>Username: {props.user.username}</p>
-      <Link to={{path: '/compose', state: {to: props.user._id }}} >
+      <Link to={'/compose:' + props.user._id } >
         <button>Message</button>
       </Link>
     </div>

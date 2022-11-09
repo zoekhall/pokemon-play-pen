@@ -22,13 +22,10 @@ const isLoggedIn = (req, res, next) => {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(CLIENT_PATH));
 app.use('/login', express.static(path.join(__dirname, '../client/dist/login')));
 app.use('/home', isLoggedIn, express.static(path.join(__dirname, '../client/dist')));
 
-
-app.get('/', (req, res) => {
-  res.redirect('/login');
-});
 
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
@@ -41,30 +38,21 @@ app.get('/auth/google/callback',
   })
 );
 
-app.get('/home', isLoggedIn, (req, res) => {
-
-});
-
 app.get('/auth/failure', (req, res) => {
-  res.send('Something went wrong');
+  res.redirect('/login');
 });
 
-app.get('/logout', function (req, res) {
-  res.redirect('http://localhost:8080/');
-});
 
 app.use('/api/user', User);
 app.use('/api/pokedex', Pokedex);
 app.use('/api/deck', Deck);
 
-app.use('/*', (req, res)=>{
-  res.sendFile(path.join(__dirname, CLIENT_PATH, 'index.html'),
-    (err)=>{
-      if (err) {
-        res.status(500).send(err);
-      }
+app.use('*', (req, res)=>{
+  res.sendFile(path.join(CLIENT_PATH, 'index.html'), (err)=>{
+    if (err) {
+      res.status(500).send(err);
     }
-  );
+  });
 });
 
 module.exports = {

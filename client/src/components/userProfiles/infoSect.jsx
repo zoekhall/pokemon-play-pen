@@ -18,7 +18,7 @@ const InfoSect = ({ id }) => {
 
   const changeName = () => {
     axios.patch('/api/user/name')
-      .then(data => { console.log(data, 'name change'); retriveIdData(); })
+      .then(data => { retriveIdData(); })
       .catch(err => console.log(err, 'name error'));
   };
 

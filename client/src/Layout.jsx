@@ -13,9 +13,9 @@ const Layout = () => {
             <Link to="/messages">Messages</Link>
           </li>
           <ol>
-            <li><Link to={'messages/inbox'}>Inbox</Link></li>
-            <li><Link to={'messages/search'}>Search</Link></li>
-            <li><Link to={'messages/sent'}>Sent</Link></li>
+            <li><Link to={'/inbox'}>Inbox</Link></li>
+            <li><Link to={'/search'}>Search</Link></li>
+            <li><Link to={'/sent'}>Sent</Link></li>
           </ol>
           <li>
             <Link to="/marketPlace">Market Place</Link>

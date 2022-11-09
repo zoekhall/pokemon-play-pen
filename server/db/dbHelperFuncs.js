@@ -45,6 +45,9 @@ const addCard = (card, cb) => {
     .catch(error => console.log(error));
 };
 
+const addMessage = (chat, cb)=>{
+
+};
 module.exports = {
   obtainAllUsers,
   createUser,
@@ -52,5 +55,6 @@ module.exports = {
   findUserById,
   changeUsername,
   changeDescription,
-  addCard
+  addCard,
+  addMessage
 };

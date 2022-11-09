@@ -15,17 +15,15 @@ const Messages = () => {
 
 
   return (
-
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route path='inbox' element={< Inbox/>} />
-        <Route path='search' element={< Search/>} />
-        <Route path='sent' element={< Sent/>} />
+        <Route index element={< Search/>} />
+        <Route path=':search' element={< Search/>} />
+        <Route path=':sent' element={< Sent/>} />
+        <Route path=':*' element={<Search/>}/>
       </Route>
     </Routes>
-
   );
-
 };
 
 export default Messages;

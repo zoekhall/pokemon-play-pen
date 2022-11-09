@@ -7,13 +7,13 @@ const Layout = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/inbox">Inbox</Link>
+            <Link to="/messages">Inbox</Link>
           </li>
           <li>
-            <Link to="/search">Search</Link>
+            <Link to="/messages:search">Search</Link>
           </li>
           <li>
-            <Link to="/sent">Sent</Link>
+            <Link to="/messages:sent">Sent</Link>
           </li>
         </ul>
       </nav>

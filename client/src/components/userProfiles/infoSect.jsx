@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const InfoSect = ({ id }) => {
   const [profile, setProfile] = useState({});
-  const [description, setDescription] = useState;
+
 
   const retriveIdData = () => {
     if (id === undefined) { // if no id from another is inputted
@@ -13,7 +13,7 @@ const InfoSect = ({ id }) => {
     } else {
       console.log('id inputted', id);
     }
-    
+
   };
 
   const changeName = () => {
@@ -38,4 +38,4 @@ const InfoSect = ({ id }) => {
   );
 };
 
-export default InfoSect; 
+export default InfoSect;

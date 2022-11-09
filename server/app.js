@@ -42,6 +42,7 @@ app.get('/auth/google/callback',
 );
 
 app.get('/home', isLoggedIn, (req, res) => {
+
 });
 
 app.get('/auth/failure', (req, res) => {
@@ -51,11 +52,7 @@ app.get('/auth/failure', (req, res) => {
 app.get('/logout', function (req, res) {
   res.redirect('http://localhost:8080/');
 });
-app.get('/api', (req, res)=>{
-  console.log('hit');
-  res.sendStatus(200);
 
-});
 app.use('/api/user', User);
 app.use('/api/pokedex', Pokedex);
 app.use('/api/deck', Deck);

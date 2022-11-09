@@ -7,19 +7,13 @@ const Layout = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/">Profile</Link>
+            <Link to="/messages">Inbox</Link>
           </li>
           <li>
-            <Link to="/messages">Messages</Link>
+            <Link to="/messages:search">Search</Link>
           </li>
           <li>
-            <Link to="/marketPlace">Market Place</Link>
-          </li>
-          <li>
-            <Link to="/pokedex">Poke-dex</Link>
-          </li>
-          <li>
-            <Link to="/collection">Collection</Link>
+            <Link to="/messages:sent">Sent</Link>
           </li>
         </ul>
       </nav>

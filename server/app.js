@@ -58,7 +58,13 @@ app.use('/api/pokedex', Pokedex);
 app.use('/api/deck', Deck);
 
 app.use('/*', (req, res)=>{
-  res.redirect('/');
+  res.sendFile(path.join(__dirname, CLIENT_PATH, 'index.html'),
+    (err)=>{
+      if (err) {
+        res.status(500).send(err);
+      }
+    }
+  );
 });
 
 module.exports = {

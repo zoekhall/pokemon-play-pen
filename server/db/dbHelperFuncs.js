@@ -27,16 +27,15 @@ const changeUsername = (loggedInId, newName) => { //DOES NOT WORK
   User.findByIdAndUpdate(
     loggedInId,
     { username: newName })
-    .then(data => console.log(data, 'changedesc change'))
+    .then(data => data)
     .catch(err => console.log(err));
 };
 
 const changeDescription = (loggedInId, newDescription) => {
-  console.log('hit');
   User.findByIdAndUpdate(
     loggedInId,
     { description: newDescription })
-    .then(data => console.log(data, 'changedesc change'))
+    .then(data => data)
     .catch(err => console.log(err));
 };
 

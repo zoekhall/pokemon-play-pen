@@ -1,3 +1,5 @@
+const { addCard } = require('../db/dbHelperFuncs.js');
+
 const { Router } = require('express');
 const Deck = Router();
 
@@ -11,7 +13,9 @@ Deck.get('/', (req, res) => {
       // console.log('DATAAA', data.data.data);
       const resArr = data.data.data.map((card) => {
         const resObj = {
-          id: card.id
+          _id: card.id,
+          name: card.name,
+          image: card.images.small
         };
         return resObj;
       });
@@ -21,5 +25,16 @@ Deck.get('/', (req, res) => {
   // res.send('hello and thank you');
 });
 
+Deck.post('/', (req, res) => {
+  // console.log('TEST', req.user._id);
+  const { q } = req.body.params;
+  const cardObj = {
+    cardId: q.id,
+    userId: req.user._id,
+    cardName: q.name,
+    image: q.images.small
+  };
+  addCard(cardObj);
+});
 
 module.exports = { Deck };

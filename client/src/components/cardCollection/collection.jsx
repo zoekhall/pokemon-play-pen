@@ -1,17 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import SearchForm from './searchForm.jsx';
+import CardList from './cardList.jsx';
 
 const Collection = () => {
 
-  useEffect(() => {
-    axios.get('/api/deck', { params: { q: 'Charizard' } });
-    // .then(data => console.log(data));
-  }, []);
+  const [cards, setCards] = useState([]);
 
   return (
     <div>
-      CARDCOLLECTION!!!
+      <SearchForm setCards={setCards} />
+      <CardList cards={cards} />
     </div>
   );
 };

@@ -43,9 +43,9 @@ app.get('/auth/failure', (req, res) => {
 });
 
 
-app.use('/api/user', User);
-app.use('/api/pokedex', Pokedex);
-app.use('/api/deck', Deck);
+app.use('/api/user', User); // endpoint for all the user schema related endpoints
+app.use('/api/pokedex', Pokedex); // endpoint for all the pokedex related schema endpoints
+app.use('/api/deck', Deck); // endpoint for all the card/deck related schema endpoints
 
 app.use('*', (req, res)=>{
   res.sendFile(path.join(CLIENT_PATH, 'index.html'), (err)=>{

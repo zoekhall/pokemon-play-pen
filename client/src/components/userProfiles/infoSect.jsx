@@ -40,13 +40,13 @@ const InfoSect = ({ id }) => {
       .catch(err => console.log(err, 'description err'));
   };
 
-  const handleClick = () => {
-    if (userRef.current.value.length !== 0) {
+  const handleClick = () => { // update the username and description witht he incomming user input
+    if (userRef.current.value.length !== 0) { // if the text field is not empty change the username
       changeUsername(userRef.current.value);
     } else { console.log('user ref is short'); }
 
     if (descRef.current.value.length !== 0) {
-      changeDescription(descRef.current.value);
+      changeDescription(descRef.current.value); // if the description field is not empty change the description
     } else { console.log('desc ref is shooort'); }
   };
 
@@ -55,11 +55,10 @@ const InfoSect = ({ id }) => {
   }, []);
 
 
-  // changeName(inputVals.username);
-  // changeDescription(inputVals.description);
 
-  const userRef = useRef(null);
-  const descRef = useRef(null);
+  const userRef = useRef(null); // the refrence for the username edit text 
+  const descRef = useRef(null); // the refrence for the description edit text
+
   return (
     <div>
       <img alt={profile.firstName} width='100px' src={profile.avatar} referrerpolicy="no-referrer" /> <br />

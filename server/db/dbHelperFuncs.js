@@ -1,5 +1,6 @@
-const { Deck, User, Chat } = require('./index.js');
 const db = require('mongoose');
+const { Deck, User, Chat } = require('./index.js');
+
 
 const obtainAllUsers = function () {
   User.find({});
@@ -8,6 +9,7 @@ const obtainAllUsers = function () {
 const createUser = function (data) {
   User.create(data);
 };
+
 
 const findUser = (user, cb) => {
   User.find({ username: { $regex: `${user}` } })
@@ -36,6 +38,11 @@ const changeDescription = (loggedInId, newDescription) => {
     { description: newDescription })
     .then(data => console.log(data, 'changedesc change'))
     .catch(err => console.log(err));
+}
+
+const addCard = (card, cb) => {
+  Deck.create(card)
+    .catch(error => console.log(error));
 };
 
 module.exports = {
@@ -45,4 +52,6 @@ module.exports = {
   findUserById,
   changeUsername,
   changeDescription
+  addCard
 };
+

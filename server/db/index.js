@@ -32,9 +32,8 @@ const userSchema = new Schema({
   },
   deckId: String,
   favPokemon: String,
-  description: String,
   avatar: String,
-  friends: [{ friendId: Number }],
+  description: String,
 });
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
@@ -55,7 +54,9 @@ const chatSchema = new Schema({
 
 const deckSchema = new Schema({
   cardId: String,
-  userId: String
+  userId: String,
+  cardName: String,
+  image: String
 });
 
 const User = mongoose.model('User', userSchema);
@@ -79,7 +80,7 @@ function (accessToken, refreshToken, profile, cb) {
   });
 }
 ));
-const deckModel = mongoose.model('Deck', deckSchema);
+const Deck = mongoose.model('Deck', deckSchema);
 const chatModel = mongoose.model('Chat', chatSchema);
 passport.use(User.createStrategy());
 
@@ -98,7 +99,7 @@ passport.deserializeUser(function (id, done) {
 
 
 module.exports = {
-  deckModel,
+  Deck,
   User,
   chatModel,
 };

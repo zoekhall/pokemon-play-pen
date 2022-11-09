@@ -1,5 +1,5 @@
 const db = require('mongoose');
-const { obtainAllUsers, createUser, findUser } = require('../db/dbHelperFuncs.js');
+const { obtainAllUsers, createUser, findUser, findUserById, changeUsername } = require('../db/dbHelperFuncs.js');
 const { Router } = require('express');
 const User = Router();
 
@@ -11,7 +11,7 @@ User.get('/current', (req, res) => { // get the currently logged in user
 
 User.get('/:id', (req, res) => { // get the user at the specified id
   //console.log(req);
-  res.status(200).send(req.params); // sends an object of the user id => { id: 12345678900000 }
+  res.status(200).send(findUserById(req.params.id)); // sends an object of the user id => { id: 12345678900000 }
 });
 User.get('/', (req, res) => {
   console.log(req);
@@ -28,6 +28,12 @@ User.get('/findUser', (req, res)=>{
     res.sendStatus(500);
   }
 
+});
+
+User.patch('/name', (req, res) => {
+  console.log(req.user);
+  changeUsername(req.user._id);
+  res.status(201).send('name changed');
 });
 
 

@@ -4,10 +4,10 @@ import { Route, Routes } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 // Components
-import Layout from './Layout.js';
-import Search from './Components/Search.js';
-import Inbox from './Components/Inbox.js';
-import Sent from './Components/Sent.js';
+import Layout from './Layout.jsx';
+import Search from './Components/Search.jsx';
+import Inbox from './Components/Inbox.jsx';
+import Sent from './Components/Sent.jsx';
 
 const Messages = () => {
 

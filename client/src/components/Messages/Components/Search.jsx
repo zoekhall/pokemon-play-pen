@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import FoundUsers from './FoundUsers.js';
+import FoundUsers from './FoundUsers.jsx';
 
 
 const Search = () => {

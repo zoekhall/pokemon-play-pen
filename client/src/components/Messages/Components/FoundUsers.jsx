@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link, Route } from 'react-router-dom';
 
 const FoundUsers = props => {
-     
+
 
   return (
     <div>
@@ -10,7 +11,9 @@ const FoundUsers = props => {
         {props.user.firstName} {props.user.lastName}
       </p>
       <p>Username: {props.user.username}</p>
-      <button>Message</button>
+      <Link to={'/compose:' + props.user._id } >
+        <button>Message</button>
+      </Link>
     </div>
   );
 };

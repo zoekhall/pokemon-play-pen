@@ -6,9 +6,6 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 require('dotenv').config();
 
-const session = require('express-session');
-
-
 const mongoUri = 'mongodb://localhost/poke';
 
 
@@ -65,7 +62,7 @@ passport.use(new GoogleStrategy({
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   callbackURL: process.env.CALLBACK_URL,
 },
-function (accessToken, refreshToken, profile, cb) {
+(accessToken, refreshToken, profile, cb) => {
   User.findOrCreate({
     _id: profile.id,
     username: profile.displayName,
@@ -74,7 +71,7 @@ function (accessToken, refreshToken, profile, cb) {
     lastName: profile._json.family_name,
     avatar: profile._json['picture'],
 
-  }, function (err, user) {
+  }, (err, user) => {
     //console.log(profile);
     return cb(err, user);
   });
@@ -85,17 +82,14 @@ const chatModel = mongoose.model('Chat', chatSchema);
 passport.use(User.createStrategy());
 
 
-passport.serializeUser(function (user, done) {
+passport.serializeUser( (user, done) => {
   done(null, user.id);
 });
-passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, user) => {
     done(err, user);
   });
 });
-
-
-
 
 
 module.exports = {

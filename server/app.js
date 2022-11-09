@@ -4,9 +4,8 @@ const session = require('express-session');
 const passport = require('passport');
 const { User } = require('./routes/userRoutes.js');
 const { Deck } = require('./routes/deckRoutes.js');
+const { Pokedex } = require('./routes/pokedexRoutes.js');
 const CLIENT_PATH = path.resolve(__dirname, '../client/dist');
-
-
 
 const app = express();
 app.use(session({
@@ -43,21 +42,19 @@ app.get('/auth/google/callback',
 );
 
 app.get('/home', isLoggedIn, (req, res) => {
- 
+
 });
 
 app.get('/auth/failure', (req, res) => {
   res.send('Something went wrong');
 });
 
-
-
 app.get('/logout', function (req, res) {
   res.redirect('http://localhost:8080/');
 });
 
 app.use('/api/user', User);
-
+app.use('/api/pokedex', Pokedex);
 app.use('/api/deck', Deck);
 
 module.exports = {

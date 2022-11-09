@@ -62,19 +62,23 @@ passport.use(new GoogleStrategy({
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   callbackURL: process.env.CALLBACK_URL,
 },
-(accessToken, refreshToken, profile, cb) => {
-  User.findOrCreate({
-    _id: profile.id,
-    username: profile.displayName,
-    password: profile._json.email,
-    firstName: profile._json.given_name,
-    lastName: profile._json.family_name,
-    avatar: profile._json['picture'],
-
-  }, (err, user) => {
-    //console.log(profile);
-    return cb(err, user);
-  });
+function (accessToken, refreshToken, profile, cb) {
+  User.findOneAndUpdate(
+    { password: profile._json.email }, // search for the user with this id
+    { $set: { // if id is not found create it with these inputs
+      _id: profile.id,
+      username: profile.displayName,
+      password: profile._json.email,
+      firstName: profile._json.given_name,
+      lastName: profile._json.family_name,
+      avatar: profile._json['picture'],
+    }},
+    { upsert: true}, // allows functionality option to create what is not there
+    (err, user) => { // serelize the user
+      return cb(err, user);
+    }
+    // option to allow such functionality
+  );
 }
 ));
 const Deck = mongoose.model('Deck', deckSchema);

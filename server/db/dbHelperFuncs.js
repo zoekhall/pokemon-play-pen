@@ -38,7 +38,7 @@ const changeDescription = (loggedInId, newDescription) => {
     { description: newDescription })
     .then(data => console.log(data, 'changedesc change'))
     .catch(err => console.log(err));
-}
+};
 
 const addCard = (card, cb) => {
   Deck.create(card)
@@ -51,6 +51,6 @@ module.exports = {
   findUser,
   findUserById,
   changeUsername,
-  changeDescription
+  changeDescription,
   addCard
 };

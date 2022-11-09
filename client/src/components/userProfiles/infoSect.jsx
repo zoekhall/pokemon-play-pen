@@ -3,6 +3,11 @@ import axios from 'axios';
 
 const InfoSect = ({ id }) => {
   const [profile, setProfile] = useState({});
+  const [inputVals, setInputVals] = useState({
+    description: profile.description,
+    username: profile.username,
+    clicked: false
+  });
 
   const retriveIdData = () => {
     if (id === undefined) { // if no id from another is inputted
@@ -14,7 +19,6 @@ const InfoSect = ({ id }) => {
     }
 
   };
-
 
   const changeName = (newName) => {
     axios.patch('/api/user/name', { name: newName})
@@ -29,7 +33,6 @@ const InfoSect = ({ id }) => {
   };
 
 
-
   useEffect(retriveIdData, []);
 
 
@@ -39,8 +42,9 @@ const InfoSect = ({ id }) => {
       Your Username: {profile.username} <br />
       Your Description: {profile.description}<button onClick={() => editDescription('Iam the one born on a bolder 30 years ago on mount fugi')}>Edit</button><br />
       A friend for testing: <br />
-      button:
-      <button onClick={() => changeName('Sid the squid')}>This should not be used unless the schema username is fixed</button>
+      { inputVals.clicked ? 
+        <div><input value={inputVals.username} onChang/> <button onClick={() => { changeName(inputVals.username); setInputVals(() => ({clicked: false})); }}>Post</button></div> : 
+        <button onClick={() => setInputVals(() => ({clicked: true})) }>edit Username</button>}
     </div>
   );
 };

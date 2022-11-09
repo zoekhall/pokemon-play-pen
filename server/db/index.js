@@ -69,11 +69,10 @@ passport.use(new GoogleStrategy({
     password: profile._json.email,
     firstName: profile._json.given_name,
     lastName: profile._json.family_name,
-    avatar: profile._json['picture']
+    avatar: profile._json['picture'],
 
   }, (err, user) => {
     //console.log(profile);
-
     return cb(err, user);
   });
 }

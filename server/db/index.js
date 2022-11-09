@@ -32,8 +32,9 @@ const userSchema = new Schema({
   },
   deckId: String,
   favPokemon: String,
-  avatar: String,
   description: String,
+  avatar: String,
+  friends: [{ friendId: Number }],
 });
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);

@@ -82,7 +82,7 @@ function (accessToken, refreshToken, profile, cb) {
 }
 ));
 const Deck = mongoose.model('Deck', deckSchema);
-const chatModel = mongoose.model('Chat', chatSchema);
+const Chat = mongoose.model('Chat', chatSchema);
 passport.use(User.createStrategy());
 
 
@@ -99,5 +99,5 @@ passport.deserializeUser((id, done) => {
 module.exports = {
   Deck,
   User,
-  chatModel,
+  Chat,
 };

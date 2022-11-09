@@ -46,8 +46,24 @@ const addCard = (card, cb) => {
 };
 
 const addMessage = (chat, cb)=>{
+  Chat.create(chat)
+    .then(data => cb(data))
+    .catch(err => console.log(err));
+};
+
+const getUsersMsg = (id, cb) => {
+  Chat.find({to: id})
+    .then(data => cb(data))
+    .catch(err => console.log(err));
 
 };
+const getSentMsg = (id, cb) => {
+  Chat.find({from: id})
+    .then(data => cb(data))
+    .catch(err => console.log(err));
+
+};
+
 module.exports = {
   obtainAllUsers,
   createUser,
@@ -56,5 +72,7 @@ module.exports = {
   changeUsername,
   changeDescription,
   addCard,
-  addMessage
+  addMessage,
+  getUsersMsg,
+  getSentMsg
 };

@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link} from 'react-router-dom';
 import axios from 'axios';
 
 const Compose = props => {
-  //getting user Id from endpoint and parsing it
   const [message, setText] = useState('');
+  //getting user Id from endpoint and parsing it
   const id = Number(useLocation().pathname.split(':')[1]);
+
+
 
   const setMsg = () => {
     if (message.length > 5 ) {
@@ -20,10 +22,12 @@ const Compose = props => {
   return (
     <div>
       <h2>
-      Compose
+        Compose
       </h2>
       <input onChange={e=>setText(e.target.value)}type='text' width='200px'/>
-      <button onClick={setMsg}>Send</button>
+      <Link to={'/inbox'} >
+        <button onClick={setMsg}>Send</button>
+      </Link>
     </div>
   );
 };

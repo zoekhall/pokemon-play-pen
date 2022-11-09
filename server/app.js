@@ -56,7 +56,8 @@ app.get('/logout', function (req, res) {
 app.use('/api/user', User);
 app.use('/api/pokedex', Pokedex);
 app.use('/api/deck', Deck);
-app.use('/*', isLoggedIn, (req, res)=>{
+
+app.use('/*', (req, res)=>{
   res.redirect('/');
 });
 

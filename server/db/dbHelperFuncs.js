@@ -1,11 +1,11 @@
 const db = require('mongoose');
 const { Deck, User, Chat } = require('./index.js');
 
-const obtainAllUsers = function () {
+const obtainAllUsers = () => {
   User.find({});
 };
 
-const createUser = function (data) {
+const createUser = (data) => {
   User.create(data);
 };
 

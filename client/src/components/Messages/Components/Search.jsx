@@ -8,16 +8,16 @@ const Search = () => {
 
 
   const findUser = ()=>{
-    axios.get('/api/user/findUser', {params: {name: 'tester'}})
+    axios.get('/api/user/find', {params: {name: 'tester'}})
       .then(data=> {
-        //console.log(data.data);
+        console.log(data);
         setUsers(data.data);
       })
       .catch(err => console.log(err));
   };
 
   return (
-    <>
+    <div>
       <input type="text" />
       <button onClick={findUser}>SEARCH</button>
       {searched.map(
@@ -28,7 +28,7 @@ const Search = () => {
           />
         )
       )}
-    </>
+    </div>
   );
 };
 

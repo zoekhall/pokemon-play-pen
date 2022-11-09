@@ -9,14 +9,7 @@ User.get('/current', (req, res) => { // get the currently logged in user
   res.status(200).send(req.user); // sends the google auth object from passport
 });
 
-User.get('/:id', (req, res) => { // get the user at the specified id
-  //console.log(req);
-  res.status(200).send(findUserById(req.params.id)); // sends an object of the user id => { id: 12345678900000 }
-});
-
-
-User.get('/findUser', (req, res)=>{
-  //console.log(req.query.name);
+User.get('/find', (req, res)=>{
   const user = req.query.name;
   findUser(user, (returnedUsers)=>{
     if (returnedUsers.length) {
@@ -25,7 +18,11 @@ User.get('/findUser', (req, res)=>{
       res.sendStatus(500);
     }
   });
+});
 
+User.get('/:id', (req, res) => { // get the user at the specified id
+  //console.log(req);
+  res.status(200).send(findUserById(req.params.id)); // sends an object of the user id => { id: 12345678900000 }
 });
 
 User.patch('/name', (req, res) => {

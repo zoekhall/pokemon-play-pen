@@ -1,5 +1,5 @@
-const { Deck, User, Chat } = require('./index.js');
 const db = require('mongoose');
+const { Deck, User, Chat } = require('./index.js');
 
 const obtainAllUsers = function () {
   User.find({});

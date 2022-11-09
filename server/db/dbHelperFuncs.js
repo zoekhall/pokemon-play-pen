@@ -10,8 +10,8 @@ const createUser = function (data) {
 };
 
 const findUser = (user, cb) => {
-  User.find({username: { $regex: `${user}`}})
-    .then(foundUsers=> cb(foundUsers))
+  User.find({ username: { $regex: `${user}` } })
+    .then(foundUsers => cb(foundUsers))
     .catch(err => console.log(err));
 };
 
@@ -21,11 +21,21 @@ const findUserById = id => {
     .catch(err => console.log(err, 'find by id err'));
 };
 
-const changeUsername = (loggedInId) => { //DOES NOT WORK
-  User.findOneAndUpdate(
-    { _id: loggedInId },
-    { username: 'NOT SHLOME' }
-  );
+const changeUsername = (loggedInId, newName) => { //DOES NOT WORK
+  User.findByIdAndUpdate(
+    loggedInId,
+    { username: newName })
+    .then(data => console.log(data, 'changedesc change'))
+    .catch(err => console.log(err));
+};
+
+const changeDescription = (loggedInId, newDescription) => {
+  console.log('hit');
+  User.findByIdAndUpdate(
+    loggedInId,
+    { description: newDescription })
+    .then(data => console.log(data, 'changedesc change'))
+    .catch(err => console.log(err));
 };
 
 module.exports = {
@@ -33,5 +43,6 @@ module.exports = {
   createUser,
   findUser,
   findUserById,
-  changeUsername
+  changeUsername,
+  changeDescription
 };

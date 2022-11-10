@@ -12,16 +12,11 @@ const PokeEntry = styled.div`
   display: inline-block;
 `;
 
-const PokeImg = styled.img`
-  position: center;
-`;
-
-const PokeName = styled.h4`
-  position: center;
-`;
-
-const Buttons = styled.div`
-  position: center;
+const Contents = styled.div`
+  display: grid;
+  grid-template-rows: 100%, 100%, 100%, 100%, 100%;
+  grid-row-gap: 10px;
+  justify-items: center;
 `;
 
 const Poke = ({selectPoke}) => {
@@ -39,15 +34,16 @@ const Poke = ({selectPoke}) => {
 
   return pokedex.map((pokemon, id) => {
     id++;
+    pokemon.name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
     return (
       <PokeEntry onClick={() => selectPoke(id)} >
-        <PokeImg src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} />
-        <PokeName>{pokemon.name}</PokeName>
-        <Buttons>
-          <button>Add { pokemon.name } as Favorite Pokemon</button>
+        <Contents>
+          <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} />
+          <h4>{pokemon.name}</h4>
+          <button>Add as Your Favorite</button>
           <button>View {`${pokemon.name}'s`} Stats</button>
-          <button>View Cards Related to { pokemon.name }</button>
-        </Buttons>
+          <button>View {`${pokemon.name}'s`} Cards</button>
+        </Contents>
       </PokeEntry>
     );
   });

@@ -1,13 +1,13 @@
 const db = require('mongoose');
 const { obtainAllUsers, createUser, findUser, findUserById, changeUsername, changeDescription } = require('../db/dbHelperFuncs.js');
 const { Router } = require('express');
-const { pokeData } = require('../exampleDATA&endpoints/examplePokemon.js');
+// const { pokeData } = require('../exampleDATA&endpoints/examplePokemon.JSON');
 const User = Router();
 
 //retrieve all user data from schema
 User.get('/current', (req, res) => { // get the currently logged in user
   //console.log(req);
-  console.log(pokeData.abilities);
+  //console.log(pokeData.abilities);
   res.status(200).send(req.user); // sends the google auth object from passport
 });
 

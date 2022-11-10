@@ -6,7 +6,7 @@ Pokedex.get('/', (req, res) => {
   axios
     .get('https://pokeapi.co/api/v2/pokemon/?limit=151')
     .then((pokemon) => {
-      console.log('Request for Pokemon Data Sucessful');
+      //console.log('Request for Pokemon Data Sucessful');
       res.status(202);
       res.send(pokemon.data.results);
     })

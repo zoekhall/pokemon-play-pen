@@ -12,7 +12,7 @@ const InfoSect = ({ id }) => {
   const retriveIdData = () => {
     if (id === undefined) { // if no id from another is inputted
       axios.get('/api/user/current') // then just return YOU the current user data
-        .then(data => { setProfile(data.data); console.log(data); })
+        .then(data => { setProfile(data.data); })
         .catch(err => console.log(err, 'ERROR ON GET CURRENT USER'));
     } else {
       console.log('id inputted', id);
@@ -42,8 +42,8 @@ const InfoSect = ({ id }) => {
       Your Username: {profile.username} <br />
       Your Description: {profile.description}<button onClick={() => editDescription('Iam the one born on a bolder 30 years ago on mount fugi')}>Edit</button><br />
       A friend for testing: <br />
-      { inputVals.clicked ? 
-        <div><input value={inputVals.username} onChang/> <button onClick={() => { changeName(inputVals.username); setInputVals(() => ({clicked: false})); }}>Post</button></div> : 
+      { inputVals.clicked ?
+        <div><input value={inputVals.username} onChang/> <button onClick={() => { changeName(inputVals.username); setInputVals(() => ({clicked: false})); }}>Post</button></div> :
         <button onClick={() => setInputVals(() => ({clicked: true})) }>edit Username</button>}
     </div>
   );

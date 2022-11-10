@@ -5,12 +5,13 @@ import FoundUsers from './FoundUsers.jsx';
 
 const Search = () => {
   const [searched, setUsers] = useState([]);
+  const [user, setSearch] = useState('');
 
 
   const findUser = ()=>{
-    axios.get('/api/user/find', {params: {name: 'tester'}})
+    axios.get('/api/user/find', {params: {name: user}})
       .then(data=> {
-        console.log(data);
+        //console.log(data);
         setUsers(data.data);
       })
       .catch(err => console.log(err));
@@ -18,16 +19,13 @@ const Search = () => {
 
   return (
     <div>
-      <input type="text" />
+      <input onChange={e=>setSearch(e.target.value)} type="text" />
       <button onClick={findUser}>SEARCH</button>
-      {searched.map(
-        user => (
-          <FoundUsers
-            user={user}
-            key={user._id}
-          />
-        )
-      )}
+      {searched.map(user => (
+        <FoundUsers
+          user={user}
+          key={user._id}
+        />))}
     </div>
   );
 };

@@ -12,7 +12,7 @@ const createUser = function (data) {
 
 
 const findUser = (user, cb) => {
-  User.find({ username: { $regex: `${user}` } })
+  User.find({ username: { $regex: `${user}`, $options: 'i' } })
     .then(foundUsers => cb(foundUsers))
     .catch(err => console.log(err));
 };
@@ -44,6 +44,20 @@ const addCard = (card, cb) => {
     .catch(error => console.log(error));
 };
 
+const addMessage = (chat, cb)=>{
+  Chat.create(chat)
+    .then(data => cb(data))
+    .catch(err => console.log(err));
+};
+
+const getUsersMsg = (id, cb) => {
+  Chat.find({to: id, from: id})
+    .then(data => cb(data))
+    .catch(err => console.log(err));
+
+};
+
+
 module.exports = {
   obtainAllUsers,
   createUser,
@@ -51,5 +65,8 @@ module.exports = {
   findUserById,
   changeUsername,
   changeDescription,
-  addCard
+  addCard,
+  addMessage,
+  getUsersMsg,
+
 };

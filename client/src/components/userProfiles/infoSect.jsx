@@ -26,7 +26,7 @@ const InfoSect = ({ id }) => {
 
   const getFavPokemonData = () => {
     axios.get('api/user/current/pokemon')
-      .then(data => console.log(data.species))
+      .then(data => console.log('works'))
       .catch(err => console.log(err, 'pokemon err'));
   };
 

@@ -19,7 +19,7 @@ const Contents = styled.div`
   justify-items: center;
 `;
 
-const Poke = ({selectPoke}) => {
+const Poke = ({selectPoke, getCards}) => {
   const [pokedex, setPokedex] = useState([]); //array of pokemon to be rendered 
 
   useEffect(() => { //retrieve pokemon list and set pokedex state to that data
@@ -35,12 +35,12 @@ const Poke = ({selectPoke}) => {
     pokemon.name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
     return (
       <PokeEntry>
-        <Contents>\
+        <Contents>
           <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} />
           <h4>{pokemon.name}</h4>
           <button>Add as Your Favorite</button>
           <button onClick={() => selectPoke(id)}>View {`${pokemon.name}'s`} Stats</button>
-          <button>View {`${pokemon.name}'s`} Cards</button>
+          <button onClick={() => getCards(pokemon.name)}>View {`${pokemon.name}'s`} Cards</button>
         </Contents>
       </PokeEntry>
     );

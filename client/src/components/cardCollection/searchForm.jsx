@@ -20,18 +20,13 @@ const SearchForm = ({ setCards }) => {
     }
   };
 
-  // this request is "just for show" - we could just have a blank page by default
+  // the request below is "just for show" - we could just have a blank page by default
+  // but instead we are starting the user off on the search page with the first 50 cards
   useEffect(() => {
     const getInitialCards = async () => {
       try {
-        const { data } = await axios.get('https://api.pokemontcg.io/v2/cards?pageSize=50',
-          {
-            headers: {
-              'api.pokemontcg.io-key': 'process.env.POKEMONTCG_API_KEY'
-            }
-          }
-        );
-        setCards(data.data);
+        const { data } = await axios.get('/api/deck/firstFiftyCards');
+        setCards(data);
       } catch (error) {
         console.error(error);
       }

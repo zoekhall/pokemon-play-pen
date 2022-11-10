@@ -10,8 +10,28 @@ const header = {
 
 Deck.get('/', (req, res) => {
   // query param below for the request object from the front end
-  // console.log('req', req.query.q);
+  // console.log('req', req);
   axios.get(`https://api.pokemontcg.io/v2/cards?q=name:*${req.query.q}*`, header)
+    .then(data => {
+      // console.log('DATAAA', data.data.data);
+      const resArr = data.data.data.map((card) => {
+        const resObj = {
+          _id: card.id,
+          name: card.name,
+          images: {small: card.images.small}
+        };
+        return resObj;
+      });
+      return resArr;
+    })
+    .then(data => res.send(data));
+  // res.send('hello and thank you');
+});
+
+Deck.get('/firstFiftyCards', (req, res) => {
+  // query param below for the request object from the front end
+  // console.log('req', req);
+  axios.get('https://api.pokemontcg.io/v2/cards?pageSize=50', header)
     .then(data => {
       // console.log('DATAAA', data.data.data);
       const resArr = data.data.data.map((card) => {

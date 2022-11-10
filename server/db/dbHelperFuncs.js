@@ -44,6 +44,12 @@ const addCard = (card, cb) => {
     .catch(error => console.log(error));
 };
 
+const getMarketCards = (cb) => {
+  Deck.find({})
+    .then((data) => cb(data))
+    .catch((err) => console.log(err));
+};
+
 const addMessage = (chat, cb)=>{
   Chat.create(chat)
     .then(data => cb(data))
@@ -68,5 +74,5 @@ module.exports = {
   addCard,
   addMessage,
   getUsersMsg,
-
+  getMarketCards
 };

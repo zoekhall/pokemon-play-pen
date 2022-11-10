@@ -19,8 +19,11 @@ const Search = () => {
 
   return (
     <div>
-      <input onChange={e=>setSearch(e.target.value)} type="text" />
-      <button onClick={findUser}>SEARCH</button>
+      Search Users
+      <input onChange={e=>{
+        setSearch(e.target.value);
+        findUser();
+      }} type="text" />
       {searched.map(user => (
         <FoundUsers
           user={user}

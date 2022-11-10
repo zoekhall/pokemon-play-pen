@@ -1,4 +1,4 @@
-const { addMessage, getUsersMsg, getSentMsg } = require('../db/dbHelperFuncs.js');
+const { addMessage, getUsersMsg } = require('../db/dbHelperFuncs.js');
 
 const { Router } = require('express');
 const Chat = Router();
@@ -9,7 +9,7 @@ Chat.get('/to', (req, res)=>{
   const id = req.user._id;
   getUsersMsg(id, (msgs)=> {
     if (msgs) {
-      res.status.send(msgs);
+      res.status(200).send(msgs.reverse());
     } else {
       res.sendStatus(404);
     }
@@ -20,7 +20,7 @@ Chat.get('/from', (req, res)=>{
   const id = req.user._id;
   getSentMsg(id, (msgs)=> {
     if (msgs) {
-      res.status.send(msgs);
+      res.status(200).send(msgs.reverse());
     } else {
       res.sendStatus(404);
     }

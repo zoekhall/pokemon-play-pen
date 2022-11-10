@@ -1,6 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const MessageList = props => {
+
+  // const [senders, setSenders] = useState([]);
+
+  const organizeMsgs = () =>{
+
+
+  };
+
+
+
+  useEffect(organizeMsgs, []);
+
   return (
     <>
       <p>test</p>

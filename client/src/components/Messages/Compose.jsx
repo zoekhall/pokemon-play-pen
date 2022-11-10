@@ -24,7 +24,7 @@ const Compose = props => {
       <h2>
         Compose
       </h2>
-      <input onChange={e=>setText(e.target.value)}type='text' width='200px'/>
+      <input onChange={e=>setText(e.target.value)} type='text'/>
       <Link to={'/inbox'} >
         <button onClick={setMsg}>Send</button>
       </Link>

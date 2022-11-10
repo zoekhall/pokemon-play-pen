@@ -10,13 +10,8 @@ const Layout = () => {
             <Link to="/">Profile</Link>
           </li>
           <li>
-            <Link to="/messages">Messages</Link>
+            <Link to="/inbox">Inbox</Link>
           </li>
-          <ol>
-            <li><Link to={'/inbox'}>Inbox</Link></li>
-            <li><Link to={'/search'}>Search</Link></li>
-            <li><Link to={'/sent'}>Sent</Link></li>
-          </ol>
           <li>
             <Link to="/marketPlace">Market Place</Link>
           </li>

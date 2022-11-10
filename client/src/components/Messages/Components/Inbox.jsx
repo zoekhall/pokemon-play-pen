@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MessageList from './MessageList.jsx';
 import axios from 'axios';
+import Search from './Search.jsx';
 
 const Inbox = () => {
 
@@ -8,7 +9,7 @@ const Inbox = () => {
 
   const getInbox = () =>{
     axios.get('/api/chat/to')
-      .then(data => setMsg(data))
+      .then(data => setMsg(data.data))
       .catch(err => console.log(err));
   };
 
@@ -17,6 +18,7 @@ const Inbox = () => {
   return (
     <div>
       <h1>Inbox</h1>
+      <Search/>
       <MessageList msg={msg}/>
     </div>
   );

@@ -17,9 +17,9 @@ const findUser = (user, cb) => {
     .catch(err => console.log(err));
 };
 
-const findUserById = id => {
+const findUserById = (id, cb) => {
   User.findById(id)
-    .then(data => data)
+    .then(data => cb(data))
     .catch(err => console.log(err, 'find by id err'));
 };
 

@@ -1,5 +1,5 @@
 const db = require('mongoose');
-const { obtainAllUsers, createUser, findUser, findUserById, changeUsername, changeDescription } = require('../db/dbHelperFuncs.js');
+const { findUser, findUserById, changeUsername, changeDescription } = require('../db/dbHelperFuncs.js');
 const { Router } = require('express');
 // const { pokeData } = require('../exampleDATA&endpoints/examplePokemon.JSON');
 const User = Router();
@@ -22,9 +22,14 @@ User.get('/find', (req, res)=>{
   });
 });
 
-User.get('/:id', (req, res) => { // get the user at the specified id
-  //console.log(req);
-  res.status(200).send(findUserById(req.params.id)); // sends an object of the user id => { id: 12345678900000 }
+User.get('/findUserId:id', (req, res) => { // get the user at the specified id
+  findUserById(req.params.id, (userInfo)=>{
+    if (userInfo) {
+      res.status(200).send(userInfo);
+    } else {
+      res.sendStatus(404);
+    }
+  });
 });
 
 User.get('/pokemon', (req, res) => {

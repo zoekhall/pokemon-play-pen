@@ -1,33 +1,39 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 import Poke from './Poke.jsx';
 import PokeInfo from './PokeInfo.jsx';
 
 const Pokedex = () => {
   const [selectedPoke, setSelectedPoke] = useState({});
-  const [pokeSelectedStatus, setPokeSelectedStatus] = useState(false);
+  const [pokeStatus, setPokeStatus] = useState(false);
 
   const selectPoke = (id) => {
-    id++;
     axios.get(`/api/pokedex/${id}`)
       .then(pokemon => {
-        console.log(`${pokemon.data.name} Retrieved`);
         setSelectedPoke(pokemon.data);
+        changePokeStatus(true);
       })
       .catch(err => console.log('Error Retrieving Pokemon', err));
   };
 
+  const changePokeStatus = (bool) => {
+    setPokeStatus(bool);
+  };
+
   const renderView = () => {
-    if (pokeSelectedStatus === true) {
-      return <PokeInfo selectedPoke={selectedPoke} />;
+    if (pokeStatus === true) {
+      return <PokeInfo selectedPoke={selectedPoke} changePokeStatus={changePokeStatus} />;
+    } else {
+      return <Poke selectPoke={selectPoke} />;
     }
   };
 
   return (
     <div>
       <h1>The Pokédex!</h1>
-      <div>{renderView()}</div>
-      <Poke selectPoke={selectPoke}/>
+      <div>
+        <div>{renderView()}</div>
+      </div>
     </div>
   );
 };

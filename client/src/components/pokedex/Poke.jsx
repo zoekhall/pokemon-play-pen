@@ -36,12 +36,12 @@ const Poke = ({selectPoke}) => {
     id++;
     pokemon.name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
     return (
-      <PokeEntry onClick={() => selectPoke(id)} >
+      <PokeEntry>
         <Contents>
           <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} />
           <h4>{pokemon.name}</h4>
           <button>Add as Your Favorite</button>
-          <button>View {`${pokemon.name}'s`} Stats</button>
+          <button onClick={() => selectPoke(id)}>View {`${pokemon.name}'s`} Stats</button>
           <button>View {`${pokemon.name}'s`} Cards</button>
         </Contents>
       </PokeEntry>

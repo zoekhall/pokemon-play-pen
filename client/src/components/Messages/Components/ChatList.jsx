@@ -1,10 +1,16 @@
 import React from 'react';
+import ChatEntry from './ChatEntry.jsx';
 
 const ChatList = props =>{
   return (
     <div>
-      <img src={props.user.avatar} alt={props.user.name} width='50'/>
-      <p>{props.user.username}</p>
+      check
+      {props.users.map(user=>(
+        <ChatEntry
+          user={user}
+          key={user._id}
+        />
+      ))}
     </div>
   );
 };

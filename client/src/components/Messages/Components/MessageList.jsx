@@ -34,25 +34,20 @@ const MessageList = () => {
 
   const userLookUp = (userObj) =>{
     const userId = Object.keys(userObj);
+    const userObjs = [];
     userId.forEach(userId=>{
       axios.get('/api/user/findUserId' + userId)
-        .then(data=> console.log(data.data))
+        .then(data=> userObjs.push(data.data))
         .catch(err => console.log(err));
     });
-
+    setUsers(userObjs);
   };
 
   useEffect(getInbox, []);
 
   return (
     <div>
-      {users.map(user=> (
-        <ChatList
-          user={user}
-          key={user._id}
-        />
-      )
-      )}
+      <ChatList users={users}/>
     </div>
   );
 };

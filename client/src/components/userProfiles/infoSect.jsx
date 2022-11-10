@@ -64,6 +64,7 @@ const InfoSect = ({ id }) => {
   return (
     <div>
       <img alt={profile.firstName} width='100px' src={profile.avatar} referrerpolicy="no-referrer" /> <br />
+
       <button onClick={() => setInputVals(() => ({ clicked: true }))}>Edit Profile</button> <br />
 
       Your Username:  {inputVals.clicked ?
@@ -81,6 +82,14 @@ const InfoSect = ({ id }) => {
           handleClick();
           setInputVals(() => ({ clicked: false }));
         }}>Post</button></div> : <div></div>}
+
+
+      Your Username: {profile.username} <br />
+      Your Description: {profile.description}<button onClick={() => editDescription('Iam the one born on a bolder 30 years ago on mount fugi')}>Edit</button><br />
+      A friend for testing: <br />
+      { inputVals.clicked ?
+        <div><input value={inputVals.username} onChang/> <button onClick={() => { changeName(inputVals.username); setInputVals(() => ({clicked: false})); }}>Post</button></div> :
+        <button onClick={() => setInputVals(() => ({clicked: true})) }>edit Username</button>}
 
     </div>
   );

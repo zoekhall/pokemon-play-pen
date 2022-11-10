@@ -1,11 +1,13 @@
 const db = require('mongoose');
 const { obtainAllUsers, createUser, findUser, findUserById, changeUsername, changeDescription } = require('../db/dbHelperFuncs.js');
 const { Router } = require('express');
+const { pokeData } = require('../exampleDATA&endpoints/examplePokemon.js');
 const User = Router();
 
 //retrieve all user data from schema
 User.get('/current', (req, res) => { // get the currently logged in user
   //console.log(req);
+  console.log(pokeData.abilities);
   res.status(200).send(req.user); // sends the google auth object from passport
 });
 
@@ -25,12 +27,16 @@ User.get('/:id', (req, res) => { // get the user at the specified id
   res.status(200).send(findUserById(req.params.id)); // sends an object of the user id => { id: 12345678900000 }
 });
 
-User.patch('/name', (req, res) => {
-  changeUsername(req.user._id, req.body.name);
+User.get('/pokemon', (req, res) => {
+  res.status(200).send({ species: pokeData.species, sprite: pokeData.sprites.other['official-artwork'] });
+});
+
+User.patch('/name', (req, res) => { // change the username of the logged in user with the inputted username
+  changeUsername(req.user._id, req.body.name); 
   res.status(201).send('name changed');
 });
 
-User.patch('/description', (req, res) => {
+User.patch('/description', (req, res) => { // change the description of the logged in user with the inputted new description
   changeDescription(req.user._id, req.body.data);
   res.status(201).send('desc changed');
 });

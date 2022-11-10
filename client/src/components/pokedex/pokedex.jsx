@@ -1,39 +1,35 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import Poke from './Poke.jsx';
+import PokeInfo from './PokeInfo.jsx';
 
 const Pokedex = () => {
-  const [pokeData, setPokeData] = useState([]);
-  const [pokemon, setPokemon] = useState('');
+  const [selectedPoke, setSelectedPoke] = useState({});
+  const [pokeSelectedStatus, setPokeSelectedStatus] = useState(false);
 
-  useEffect(() => {
-    axios
-      .get('/api/pokedex')
-      .then((pokemon) => {
-        setPokeData(pokemon.data);
+  const selectPoke = (id) => {
+    id++;
+    axios.get(`/api/pokedex/${id}`)
+      .then(pokemon => {
+        console.log(`${pokemon.data.name} Retrieved`);
+        setSelectedPoke(pokemon.data);
       })
-      .catch((err) => console.log(err));
-  }, []);
-
-  const clickName = (pokeName) => {
-    setPokemon(pokeName);
-    //console.log(pokeName);
+      .catch(err => console.log('Error Retrieving Pokemon', err));
   };
 
-  return (pokeData.map((pokemon) => {
-    return (
-      <div>
-        <div onClick={() => clickName(pokemon.name)}>{pokemon.name}</div>
-      </div>
-    );
-  }));
+  const renderView = () => {
+    if (pokeSelectedStatus === true) {
+      return <PokeInfo selectedPoke={selectedPoke} />;
+    }
+  };
+
+  return (
+    <div>
+      <h1>The Pokédex!</h1>
+      <div>{renderView()}</div>
+      <Poke selectPoke={selectPoke}/>
+    </div>
+  );
 };
 
 export default Pokedex;
-
-//get the list of all pokemon names
-//render the names of the pokemon
-//when a pokemon name is clicked - display <Pokemon>
-
-//be able to exit out of view??
-//add favorite pokemon
-//view relevant pokemon cards

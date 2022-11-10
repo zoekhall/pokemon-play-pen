@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Profile from './components/userProfiles/profile.jsx';
 import Collection from './components/cardCollection/collection.jsx';
 import MarketPlace from './components/marketPlace/marketPlace.jsx';
-import Pokedex from './components/pokedex/pokedex.jsx';
+import Pokedex from './components/pokedex/Pokedex.jsx';
 import Layout from './Layout.jsx';
 
 import Inbox from './components/Messages/Components/Inbox.jsx';

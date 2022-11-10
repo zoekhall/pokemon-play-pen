@@ -45,11 +45,11 @@ const InfoSect = ({ id }) => {
   const handleClick = () => { // update the username and description witht he incomming user input
     if (userRef.current.value.length !== 0) { // if the text field is not empty change the username
       changeUsername(userRef.current.value);
-    } else { console.log('user ref is short'); }
+    } 
 
     if (descRef.current.value.length !== 0) {
       changeDescription(descRef.current.value); // if the description field is not empty change the description
-    } else { console.log('desc ref is shooort'); }
+    }
   };
 
   useEffect(() => {
@@ -82,14 +82,6 @@ const InfoSect = ({ id }) => {
           handleClick();
           setInputVals(() => ({ clicked: false }));
         }}>Post</button></div> : <div></div>}
-
-
-      Your Username: {profile.username} <br />
-      Your Description: {profile.description}<button onClick={() => editDescription('Iam the one born on a bolder 30 years ago on mount fugi')}>Edit</button><br />
-      A friend for testing: <br />
-      { inputVals.clicked ?
-        <div><input value={inputVals.username} onChang/> <button onClick={() => { changeName(inputVals.username); setInputVals(() => ({clicked: false})); }}>Post</button></div> :
-        <button onClick={() => setInputVals(() => ({clicked: true})) }>edit Username</button>}
 
     </div>
   );

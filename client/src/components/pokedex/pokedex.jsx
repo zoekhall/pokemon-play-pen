@@ -16,7 +16,7 @@ const Pokedex = () => {
 
   const clickName = (pokeName) => {
     setPokemon(pokeName);
-    console.log(pokeName);
+    //console.log(pokeName);
   };
 
   return (pokeData.map((pokemon) => {

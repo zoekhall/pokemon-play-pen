@@ -32,7 +32,7 @@ User.get('/pokemon', (req, res) => {
 });
 
 User.patch('/name', (req, res) => { // change the username of the logged in user with the inputted username
-  changeUsername(req.user._id, req.body.name); 
+  changeUsername(req.user._id, req.body.name);
   res.status(201).send('name changed');
 });
 
@@ -44,7 +44,7 @@ User.patch('/description', (req, res) => { // change the description of the logg
 
 
 //post data to user schema to add a user
-User.post('/', (req, res) => { // adds a user to the database useing the google auth object (i would hope)
+User.post('/', (req, res) => { // adds a user to the database using the google auth object (i would hope)
   //createUser()
   //console.log(req);
   res.status(201).send();

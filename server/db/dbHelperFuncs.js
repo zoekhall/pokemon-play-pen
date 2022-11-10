@@ -12,7 +12,7 @@ const createUser = function (data) {
 
 
 const findUser = (user, cb) => {
-  User.find({ username: { $regex: `${user}`, $options: 'i' }, firstName: { $regex: `${user}`, $options: 'i' }, lastName: { $regex: `${user}`, $options: 'i' }})
+  User.find({ username: { $regex: `${user}`, $options: 'i' }})
     .then(foundUsers => cb(foundUsers))
     .catch(err => console.log(err));
 };

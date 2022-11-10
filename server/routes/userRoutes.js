@@ -12,7 +12,7 @@ User.get('/current', (req, res) => { // get the currently logged in user
 User.get('/find', (req, res)=>{
   const user = req.query.name;
   findUser(user, (returnedUsers)=>{
-    if (returnedUsers.length) {
+    if (returnedUsers) {
       res.status(200).send(returnedUsers);
     } else {
       res.sendStatus(500);

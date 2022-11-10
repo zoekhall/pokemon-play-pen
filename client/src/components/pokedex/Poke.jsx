@@ -25,8 +25,6 @@ const Poke = ({selectPoke}) => {
   useEffect(() => { //retrieve pokemon list and set pokedex state to that data
     axios.get('/api/pokedex')
       .then(pokemon => {
-        console.log('Pokemon Data Retrieved');
-        console.log('pokedata in Poke', pokemon.data);
         setPokedex(pokemon.data);
       })
       .catch((err) => console.log('Pokemon Request FAILED:', err));
@@ -37,7 +35,7 @@ const Poke = ({selectPoke}) => {
     pokemon.name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
     return (
       <PokeEntry>
-        <Contents>
+        <Contents>\
           <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} />
           <h4>{pokemon.name}</h4>
           <button>Add as Your Favorite</button>

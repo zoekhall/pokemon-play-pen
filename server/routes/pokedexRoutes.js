@@ -32,4 +32,6 @@ Pokedex.get('/:pokemonId', (req, res) => {
     });
 });
 
+
+
 module.exports = { Pokedex };

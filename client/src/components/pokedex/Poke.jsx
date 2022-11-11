@@ -19,8 +19,9 @@ const Contents = styled.div`
   justify-items: center;
 `;
 
-const Poke = ({selectPoke}) => {
-  const [pokedex, setPokedex] = useState([]); //array of pokemon to be rendered
+const Poke = ({ selectPoke }) => {
+  const [pokedex, setPokedex] = useState([]); //array of pokemon to be rendered 
+
 
   useEffect(() => { //retrieve pokemon list and set pokedex state to that data
     axios.get('/api/pokedex')
@@ -32,6 +33,12 @@ const Poke = ({selectPoke}) => {
       .catch((err) => console.log('Pokemon Request FAILED:', err));
   }, []);
 
+  const sendUserId = (id) => {
+    axios.post(`/api/user/favpokemon/${id}`)
+      .then(data => console.log(data))
+      .catch(err => console.log('Error Favoriting Pokemon', err));
+  };
+
   return pokedex.map((pokemon, id) => {
     id++;
     pokemon.name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
@@ -40,7 +47,7 @@ const Poke = ({selectPoke}) => {
         <Contents>
           <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} />
           <h4>{pokemon.name}</h4>
-          <button>Add as Your Favorite</button>
+          <button onClick={() => sendUserId(id)}>Add as Your Favorite</button>
           <button onClick={() => selectPoke(id)}>View {`${pokemon.name}'s`} Stats</button>
           <button>View {`${pokemon.name}'s`} Cards</button>
         </Contents>

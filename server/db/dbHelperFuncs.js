@@ -12,15 +12,14 @@ const createUser = function (data) {
 
 
 const findUser = (user, cb) => {
-
-  User.find({ username: { $regex: `${user}`, $options: 'i' }})
+  User.find({ username: { $regex: `${user}`, $options: 'i' }, firstName: { $regex: `${user}`, $options: 'i' }, lastName: { $regex: `${user}`, $options: 'i' } })
     .then(foundUsers => cb(foundUsers))
     .catch(err => console.log(err));
 };
 
-const findUserById = (id, cb) => {
+const findUserById = id => {
   User.findById(id)
-    .then(data => cb(data))
+    .then(data => data)
     .catch(err => console.log(err, 'find by id err'));
 };
 

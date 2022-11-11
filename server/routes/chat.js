@@ -5,7 +5,7 @@ const Chat = Router();
 
 
 
-Chat.get('/', (req, res)=>{
+Chat.get('/to', (req, res)=>{
   const id = req.user._id;
   getUsersMsg(id, (msgs)=> {
     if (msgs) {
@@ -16,6 +16,16 @@ Chat.get('/', (req, res)=>{
   });
 });
 
+Chat.get('/from', (req, res)=>{
+  const id = req.user._id;
+  getSentMsg(id, (msgs)=> {
+    if (msgs) {
+      res.status(200).send(msgs.reverse());
+    } else {
+      res.sendStatus(404);
+    }
+  });
+});
 
 Chat.post('/', (req, res)=>{
   const msg = req.body;

@@ -19,11 +19,7 @@ const Contents = styled.div`
   justify-items: center;
 `;
 
-<<<<<<< HEAD
-const Poke = ({selectPoke, getCards}) => {
-=======
 const Poke = ({ selectPoke, getCards }) => {
->>>>>>> 170c1c956bb1f72f3a70ea34173951be51a0729a
   const [pokedex, setPokedex] = useState([]); //array of pokemon to be rendered 
 
   useEffect(() => { //retrieve pokemon list and set pokedex state to that data

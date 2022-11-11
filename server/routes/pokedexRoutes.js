@@ -18,11 +18,7 @@ Pokedex.get('/', (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-//GET ONE POKEMAN OBJECT 
-=======
 //GET ONE POKEMAN OBJECT
->>>>>>> 170c1c956bb1f72f3a70ea34173951be51a0729a
 Pokedex.get('/:pokemonId', (req, res) => {
   const { pokemonId } = req.params;
 
@@ -41,11 +37,7 @@ Pokedex.get('/:pokemonId', (req, res) => {
 
 //GET POKEMON CARDS
 Pokedex.get('/card/:pokemonName', (req, res) => {
-<<<<<<< HEAD
-  const { pokemonName } = req.params; 
-=======
   const { pokemonName } = req.params;
->>>>>>> 170c1c956bb1f72f3a70ea34173951be51a0729a
 
   axios
     .get(`https://api.pokemontcg.io/v2/cards?q=name:*${pokemonName}*`)
@@ -60,8 +52,4 @@ Pokedex.get('/card/:pokemonName', (req, res) => {
     });
 });
 
-<<<<<<< HEAD
 module.exports = { Pokedex };
-=======
-module.exports = { Pokedex };
->>>>>>> 170c1c956bb1f72f3a70ea34173951be51a0729a

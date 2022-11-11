@@ -6,8 +6,6 @@ const axios = require('axios');
 
 //retrieve all user data from schema
 User.get('/current', (req, res) => { // get the currently logged in user
-  //console.log(req);
-  //console.log(pokeData.abilities);
   res.status(200).send(req.user); // sends the google auth object from passport
 });
 
@@ -50,7 +48,6 @@ User.patch('/description', (req, res) => { // change the description of the logg
 
 User.post('/favpokemon/:id', (req, res) => {
   const { id } = req.params;
-  console.log(id, 'ID');
   addFavPokemon(req.user._id, id);
   res.status(201).send('work');
 });
@@ -59,8 +56,6 @@ User.post('/favpokemon/:id', (req, res) => {
 
 //post data to user schema to add a user
 User.post('/', (req, res) => { // adds a user to the database useing the google auth object (i would hope)
-  //createUser()
-  //console.log(req);
   res.status(201).send();
 });
 

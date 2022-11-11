@@ -1,3 +1,5 @@
+
+import axios from 'axios';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -14,6 +16,14 @@ const PokeCard = styled.img`
 `;
 
 const Cards = ({ pokeCards, changePokeCardDisplay }) => {
+  // const [cardToAdd, setCardToAdd] = useState({});
+
+  const addCard = card => {
+    console.log(card);
+    
+    axios.post('/api/deck', { params: { q: card } })
+      .catch(error => console.log(error));
+  };
 
   return (
     <div>
@@ -25,7 +35,9 @@ const Cards = ({ pokeCards, changePokeCardDisplay }) => {
               <Card>
                 <PokeCard src={card.images.small} alt={`${card.name} was not found!`} />
                 <br></br>
-                <button>Add {`${card.name}`} to MarketPlace</button>   
+                <button onClick={() => { addCard(card); }}>
+                  Add {`${card.name}`} to MarketPlace
+                </button>   
               </Card>
             </CardSect>
           );

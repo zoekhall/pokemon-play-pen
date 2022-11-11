@@ -13,8 +13,6 @@ mongoose.connect(mongoUri)
   .then(() => console.log('connected to mongodb'))
   .catch(err => console.log('you did not connect to mongodb'));
 
-
-
 const userSchema = new Schema({
   _id: Number,
   firstName: String,

@@ -52,4 +52,22 @@ Pokedex.get('/card/:pokemonName', (req, res) => {
     });
 });
 
+//GET POKEMON CARDS
+Pokedex.get('/card/:pokemonName', (req, res) => {
+  const { pokemonName } = req.params;
+
+  axios
+    .get(`https://api.pokemontcg.io/v2/cards?q=name:*${pokemonName}*`)
+    .then((pokemon) => {
+      console.log(`Request for ${pokemonName} Cards Successful`);
+      res.status(202);
+      res.send(pokemon.data);
+    })
+    .catch((err) => {
+      console.log('Request for Pokemon Card Data FAILED:', err);
+      res.sendStatus(500);
+    });
+});
+
+
 module.exports = { Pokedex };

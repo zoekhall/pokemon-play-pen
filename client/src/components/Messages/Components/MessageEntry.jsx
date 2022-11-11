@@ -4,22 +4,30 @@ import { Link } from 'react-router-dom';
 
 const MessageEntry = ({msg}) =>{
 
-  const [user, setUser] = useState([]);
+  const [sender, setUser] = useState([]);
+  const [loggedInUser, setLogged] = useState();
 
   useEffect(()=>{
     axios.get('/api/user/findUserId' + msg.sender)
-      .then(data=> setUser(data.data))
+      .then(data=> {
+        setUser(data.data.data[0]);
+        return data.data.data[1];
+      })
+      .then(data=> setLogged(data))
       .catch(err => console.log(err));
   }, []);
 
   return (
     <div>
-      <p>{user.username}</p>
-      <img src={user.avatar} alt={user.name} referrerpolicy="no-referrer" width='50'/>
+      <p>From: {sender.username}</p>
+      <img src={sender.avatar} alt={sender.name} referrerpolicy="no-referrer" width='50'/>
       <p>{msg.message}</p>
-      <Link to={'/compose:' + msg.sender } >
-        <button>Reply</button>
-      </Link>
+      {loggedInUser !== Number(msg.sender) ?
+        <Link to={'/compose:' + msg.sender } >
+          <button>Reply</button>
+        </Link> :
+        <></>}
+
     </div>
   );
 };

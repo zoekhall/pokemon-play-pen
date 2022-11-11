@@ -1,6 +1,6 @@
 const db = require('mongoose');
 const { Deck, User, Chat } = require('./index.js');
-
+const axios = require('axios');
 
 const obtainAllUsers = function () {
   User.find({});
@@ -12,7 +12,7 @@ const createUser = function (data) {
 
 
 const findUser = (user, cb) => {
-  User.find({ username: { $regex: `${user}`, $options: 'i' }, firstName: { $regex: `${user}`, $options: 'i' }, lastName: { $regex: `${user}`, $options: 'i' }})
+  User.find({ username: { $regex: `${user}`, $options: 'i' }, firstName: { $regex: `${user}`, $options: 'i' }, lastName: { $regex: `${user}`, $options: 'i' } })
     .then(foundUsers => cb(foundUsers))
     .catch(err => console.log(err));
 };
@@ -39,6 +39,23 @@ const changeDescription = (loggedInId, newDescription) => {
     .catch(err => console.log(err));
 };
 
+const addFavPokemon = (loggedInId, id) => {
+  axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+    .then(data => {
+      const pokeData = data.data;
+      User.findByIdAndUpdate(loggedInId, {
+        favPokemonName: pokeData.species.name,
+        favPokemonImage: pokeData.sprites.front_default,
+        favPokemonType1: pokeData.types[0].type.name,
+        favPokemonType2: pokeData.types[1] ? pokeData.types[1].type.name : ''
+      })
+        .then(data => data)
+        .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err, 'axios errrrr poke'));
+
+};
+
 const addCard = (card, cb) => {
   Deck.create(card)
     .catch(error => console.log(error));
@@ -57,11 +74,13 @@ const addMessage = (chat, cb)=>{
 };
 
 const getUsersMsg = (id, cb) => {
-  Chat.find({to: id, from: id})
+  Chat.find({ to: id, from: id })
     .then(data => cb(data))
     .catch(err => console.log(err));
 
 };
+
+
 
 
 module.exports = {
@@ -74,5 +93,6 @@ module.exports = {
   addCard,
   addMessage,
   getUsersMsg,
+  addFavPokemon,
   getMarketCards
 };

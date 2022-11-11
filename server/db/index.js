@@ -19,14 +19,17 @@ const userSchema = new Schema({
   lastName: String,
   username: {
     type: String,
-    require: true,
+    require: true
   },
   password: {
     type: String,
     require: true,
   },
   deckId: String,
-  favPokemon: String,
+  favPokemonName: String,
+  favPokemonType1: String, 
+  favPokemonImage: String,
+  favPokemonType2: String,
   avatar: String,
   description: String,
 });
@@ -62,10 +65,9 @@ passport.use(new GoogleStrategy({
 },
 function (accessToken, refreshToken, profile, cb) {
   User.findOneAndUpdate(
-    { password: profile._json.email }, // search for the user with this id
+    { password: profile._json.email }, // search for the user with this email (password)
     { $set: { // if id is not found create it with these inputs
       _id: profile.id,
-      username: profile.displayName,
       password: profile._json.email,
       firstName: profile._json.given_name,
       lastName: profile._json.family_name,

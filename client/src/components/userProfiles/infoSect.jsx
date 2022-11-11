@@ -6,7 +6,7 @@ import axios from 'axios';
  * text inputted into edit dosent get sent to the function to edit it in the db
  */
 
-const InfoSect = ({ id }) => {
+const InfoSect = () => {
   const [profile, setProfile] = useState({});
   const [inputVals, setInputVals] = useState({});
 
@@ -45,9 +45,7 @@ const InfoSect = ({ id }) => {
     }
   };
 
-  useEffect(() => {
-    retriveIdData();
-  }, []);
+  useEffect(retriveIdData, []);
 
 
   const userRef = useRef(null); // the refrence for the username edit text 

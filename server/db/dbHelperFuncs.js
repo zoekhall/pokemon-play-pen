@@ -61,7 +61,13 @@ const addCard = (card, cb) => {
     .catch(error => console.log(error));
 };
 
-const addMessage = (chat, cb) => {
+const getMarketCards = (cb) => {
+  Deck.find({})
+    .then((data) => cb(data))
+    .catch((err) => console.log(err));
+};
+
+const addMessage = (chat, cb)=>{
   Chat.create(chat)
     .then(data => cb(data))
     .catch(err => console.log(err));
@@ -88,4 +94,5 @@ module.exports = {
   addMessage,
   getUsersMsg,
   addFavPokemon,
+  getMarketCards
 };

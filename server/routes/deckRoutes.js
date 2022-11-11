@@ -1,4 +1,4 @@
-const { addCard } = require('../db/dbHelperFuncs.js');
+const { addCard, getMarketCards } = require('../db/dbHelperFuncs.js');
 
 const { Router } = require('express');
 const Deck = Router();
@@ -26,6 +26,10 @@ Deck.get('/', (req, res) => {
     })
     .then(data => res.send(data));
   // res.send('hello and thank you');
+});
+
+Deck.get('/marketplaceCards', (req, res) => {
+  getMarketCards((data) => res.status(200).send(data));
 });
 
 Deck.get('/firstFiftyCards', (req, res) => {

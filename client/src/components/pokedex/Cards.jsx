@@ -2,9 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CardSect = styled.div`
-  padding: 10px;
-  margin: 15px;
   display: inline-block;
+`;
+
+const Card = styled.div`
+  margin: 25px;
 `;
 
 const PokeCard = styled.img`
@@ -20,8 +22,11 @@ const Cards = ({ pokeCards, changePokeCardDisplay }) => {
         {pokeCards.map(card => {
           return (
             <CardSect>
-              <PokeCard src={card.images.small} alt={`${card.name} was not found!`}/>
-              <h6>{card.name}</h6>            
+              <Card>
+                <PokeCard src={card.images.small} alt={`${card.name} was not found!`} />
+                <br></br>
+                <button>Add {`${card.name}`} to MarketPlace</button>   
+              </Card>
             </CardSect>
           );
         })}

@@ -10,16 +10,13 @@ const Search = () => {
 
   const findUser = ()=>{
     axios.get('/api/user/find', {params: {name: user}})
-      .then(data=> {
-        //console.log(data);
-        setUsers(data.data);
-      })
+      .then(users => setUsers(users.data))
       .catch(err => console.log(err));
   };
 
   return (
     <div>
-      Search Users
+      <p>Search Users:</p>
       <input onChange={e=>{
         setSearch(e.target.value);
         findUser();

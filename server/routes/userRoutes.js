@@ -14,7 +14,7 @@ User.get('/current', (req, res) => { // get the currently logged in user
 User.get('/find', (req, res)=>{
   const user = req.query.name;
   findUser(user, (returnedUsers)=>{
-    if (returnedUsers.length) {
+    if (returnedUsers) {
       res.status(200).send(returnedUsers);
     } else {
       res.sendStatus(500);
@@ -22,9 +22,14 @@ User.get('/find', (req, res)=>{
   });
 });
 
-User.get('/:id', (req, res) => { // get the user at the specified id
-  //console.log(req);
-  res.status(200).send(findUserById(req.params.id)); // sends an object of the user id => { id: 12345678900000 }
+User.get('/findUserId:id', (req, res) => { // get the user at the specified id
+  findUserById(req.params.id, (userInfo)=>{
+    if (userInfo) {
+      res.status(200).send(userInfo);
+    } else {
+      res.sendStatus(404);
+    }
+  });
 });
 
 User.get('/current/pokemon/:id', (req, res) => {
@@ -34,7 +39,7 @@ User.get('/current/pokemon/:id', (req, res) => {
 });
 
 User.patch('/name', (req, res) => { // change the username of the logged in user with the inputted username
-  changeUsername(req.user._id, req.body.name); 
+  changeUsername(req.user._id, req.body.name);
   res.status(201).send('name changed');
 });
 
@@ -53,7 +58,7 @@ User.post('/favpokemon/:id', (req, res) => {
 
 
 //post data to user schema to add a user
-User.post('/', (req, res) => { // adds a user to the database useing the google auth object (i would hope)
+User.post('/', (req, res) => { // adds a user to the database using the google auth object (i would hope)
   //createUser()
   //console.log(req);
   res.status(201).send();

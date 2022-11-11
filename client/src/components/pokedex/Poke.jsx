@@ -48,7 +48,7 @@ const Poke = ({ selectPoke }) => {
           <h4>{pokemon.name}</h4>
           <button onClick={() => sendUserId(id)}>Add as Your Favorite</button>
           <button onClick={() => selectPoke(id)}>View {`${pokemon.name}'s`} Stats</button>
-          <button>View {`${pokemon.name}'s`} Cards</button>
+          <button onClick={() => getCards(pokemon.name)}>View {`${pokemon.name}'s`} Cards</button>
         </Contents>
       </PokeEntry>
     );

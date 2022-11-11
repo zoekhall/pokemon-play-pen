@@ -7,8 +7,7 @@ import MarketPlace from './components/marketPlace/marketPlace.jsx';
 import Pokedex from './components/pokedex/Pokedex.jsx';
 import Layout from './Layout.jsx';
 import NonUserProf from './components/userProfiles/nonUserProf.jsx';
-import Inbox from './components/Messages/Components/Inbox.jsx';
-import Search from './components/Messages/Components/Search.jsx';
+import Inbox from './components/Messages/Inbox.jsx';
 import Compose from './components/Messages/Compose.jsx';
 
 

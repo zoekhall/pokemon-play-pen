@@ -8,7 +8,7 @@ const Inbox = () => {
   const [msg, setMsg] = useState([]);
 
   const getInbox = () =>{
-    axios.get('/api/chat/to')
+    axios.get('/api/chat')
       .then(data => setMsg(data.data))
       .catch(err => console.log(err));
   };

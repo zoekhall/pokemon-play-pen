@@ -9,9 +9,10 @@ const MessageEntry = ({ msg }) => {
 
   useEffect(() => {
     axios.get('/api/user/findUserId' + msg.sender)
-      .then(data => {
-        setUser(data.data.data[0]);
-        return data.data.data[1];
+      .then((data)=> {
+        const resArr = data.data.data;
+        setUser(resArr[0]);
+        return resArr[1];
       })
       .then(data => setLogged(data))
       .catch(err => console.log(err));

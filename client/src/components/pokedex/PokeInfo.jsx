@@ -53,6 +53,7 @@ const PokeInfo = ({ selectedPoke, changePokeStatus, selectedPokeId }) => {
 
 export default PokeInfo;
 
+
 //pokemon name
 //pokemon image
 //pokemon type 

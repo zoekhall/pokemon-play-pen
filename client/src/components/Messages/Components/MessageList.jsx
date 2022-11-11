@@ -22,11 +22,10 @@ const MessageList = () => {
 
   return (
     <div>
-      msg
       {msg.map(msg=>(
         <MessageEntry
           msg={msg}
-
+          key={msg._id}
         />
       ))}
     </div>

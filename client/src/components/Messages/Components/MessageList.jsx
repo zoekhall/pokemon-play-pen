@@ -1,23 +1,36 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState} from 'react';
+import axios from 'axios';
 
-const MessageList = props => {
+import MessageEntry from './MessageEntry.jsx';
 
-  // const [senders, setSenders] = useState([]);
-
-  const organizeMsgs = () =>{
+const MessageList = () => {
 
 
+  const [msg, setMsg] = useState([]);
+
+
+  const getInbox = () =>{
+    axios.get('/api/chat')
+      .then(data => setMsg(data.data))
+      .catch(err => console.log(err));
   };
 
 
 
-  useEffect(organizeMsgs, []);
+  useEffect(()=>{ getInbox(); }, []);
+
 
   return (
-    <>
-      <p>test</p>
-    </>
+    <div>
+      msg
+      {msg.map(msg=>(
+        <MessageEntry
+          msg={msg}
+
+        />
+      ))}
+    </div>
+
   );
 };
-
 export default MessageList;

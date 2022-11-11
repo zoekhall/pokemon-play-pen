@@ -8,7 +8,6 @@ Pokedex.get('/', (req, res) => {
   axios
     .get(`${url}?limit=151`)
     .then((pokemon) => {
-      console.log('Request for Pokemon Data Sucessful');
       res.status(202);
       res.send(pokemon.data.results);
     })
@@ -25,7 +24,6 @@ Pokedex.get('/:pokemonId', (req, res) => {
   axios
     .get(`${url}${pokemonId}/`)
     .then((pokemon) => {
-      console.log(`Request for ${pokemon.data.name} Successful`);
       res.status(202);
       res.send(pokemon.data);
     })
@@ -42,7 +40,6 @@ Pokedex.get('/card/:pokemonName', (req, res) => {
   axios
     .get(`https://api.pokemontcg.io/v2/cards?q=name:*${pokemonName}*`)
     .then((pokemon) => {
-      console.log(`Request for ${pokemonName} Cards Successful`);
       res.status(202);
       res.send(pokemon.data);
     })

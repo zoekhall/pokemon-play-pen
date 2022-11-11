@@ -11,7 +11,6 @@ const Search = () => {
   const findUser = ()=>{
     axios.get('/api/user/find', {params: {name: user}})
       .then(data=> {
-        //console.log(data);
         setUsers(data.data);
       })
       .catch(err => console.log(err));

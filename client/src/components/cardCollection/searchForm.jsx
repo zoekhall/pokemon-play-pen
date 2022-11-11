@@ -12,7 +12,6 @@ const SearchForm = ({ setCards }) => {
 
     try {
       const { data } = await axios.get('/api/deck', { params: { q: searchTerm } });
-      // console.log('data', data);
       setCards(data);
       setSearchTerm('');
     } catch (err) {
@@ -20,8 +19,7 @@ const SearchForm = ({ setCards }) => {
     }
   };
 
-  // the request below is "just for show" - we could just have a blank page by default
-  // but instead we are starting the user off on the search page with the first 50 cards
+
   useEffect(() => {
     const getInitialCards = async () => {
       try {
@@ -51,11 +49,3 @@ const SearchForm = ({ setCards }) => {
 };
 
 export default SearchForm;
-
-
-
-// useEffect(() => {
-//   axios.get('/api/deck', { params: { q: 'Charizard' } })
-//     .then(data => console.log(data));
-// }, []);
-

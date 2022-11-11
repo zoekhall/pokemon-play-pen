@@ -32,7 +32,7 @@ const Poke = ({ selectPoke, getCards }) => {
 
   const sendUserId = (id) => {
     axios.post(`/api/user/favpokemon/${id}`)
-      .then(data => console.log(data))
+      .then(data => data)
       .catch(err => console.log('Error Favoriting Pokemon', err));
   };
 

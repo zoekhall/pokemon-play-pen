@@ -19,14 +19,12 @@ const Contents = styled.div`
   justify-items: center;
 `;
 
-const Poke = ({ selectPoke }) => {
+const Poke = ({ selectPoke, getCards }) => {
   const [pokedex, setPokedex] = useState([]); //array of pokemon to be rendered 
 
   useEffect(() => { //retrieve pokemon list and set pokedex state to that data
     axios.get('/api/pokedex')
       .then(pokemon => {
-        console.log('Pokemon Data Retrieved');
-        console.log('pokedata in Poke', pokemon.data);
         setPokedex(pokemon.data);
       })
       .catch((err) => console.log('Pokemon Request FAILED:', err));
@@ -48,7 +46,7 @@ const Poke = ({ selectPoke }) => {
           <h4>{pokemon.name}</h4>
           <button onClick={() => sendUserId(id)}>Add as Your Favorite</button>
           <button onClick={() => selectPoke(id)}>View {`${pokemon.name}'s`} Stats</button>
-          <button>View {`${pokemon.name}'s`} Cards</button>
+          <button onClick={() => getCards(pokemon.name)}>View {`${pokemon.name}'s`} Cards</button>
         </Contents>
       </PokeEntry>
     );

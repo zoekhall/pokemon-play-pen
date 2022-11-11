@@ -8,23 +8,9 @@ const Contents = styled.div`
   justify-items: flex-start;
 `;
 
-const TypeContent = styled.div`
-  /* display: flex; */
-  /* grid-template-columns: 100px, 100px;
-  justify-items: center;   */
-`;
-
-const AbilityContent = styled.div`
-  /* display: flex; */
-  /* grid-template-columns: 100px, 100px;
-  justify-items: center;   */
-`;
-
 const PokeInfo = ({ selectedPoke, changePokeStatus, selectedPokeId }) => {
   
   selectedPoke.name = selectedPoke.name.charAt(0).toUpperCase() + selectedPoke.name.slice(1);
-  console.log(selectedPoke.order);
-  console.log('slectedid', selectedPokeId);
 
   return (
     <div>
@@ -35,20 +21,20 @@ const PokeInfo = ({ selectedPoke, changePokeStatus, selectedPokeId }) => {
 
         <div>
           <h3>Type</h3>
-          <TypeContent>{selectedPoke.types.map(pokemon => {
+          <div>{selectedPoke.types.map(pokemon => {
             return (
               <h4>{pokemon.type.name}</h4>
             );
-          })}</TypeContent>
+          })}</div>
         </div>
 
         <div>
           <h3>Abilities</h3>
-          <AbilityContent>{selectedPoke.abilities.map(pokemon => {
+          <div>{selectedPoke.abilities.map(pokemon => {
             return (
               <h4>{pokemon.ability.name}</h4>
             );
-          })}</AbilityContent>
+          })}</div>
         </div>
 
         <div>
@@ -66,6 +52,7 @@ const PokeInfo = ({ selectedPoke, changePokeStatus, selectedPokeId }) => {
 };
 
 export default PokeInfo;
+
 
 //pokemon name
 //pokemon image

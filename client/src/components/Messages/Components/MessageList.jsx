@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import axios from 'axios';
 import ChatList from './ChatList.jsx';
+import MessageEntry from './MessasgeEntry.jsx';
 
 const MessageList = () => {
 
@@ -43,11 +44,21 @@ const MessageList = () => {
     setUsers(userObjs);
   };
 
-  useEffect(getInbox, []);
+  useEffect(()=>{ getInbox(); }, []);
 
   return (
     <div>
-      <ChatList users={users}/>
+      {users.map(user=>(
+        <ChatList
+          user={user}
+        />
+      ))}
+      {msg.map(msg=>(
+        <MessageEntry
+          msg={msg}
+          key={msg._id}
+        />
+      ))}
     </div>
   );
 };

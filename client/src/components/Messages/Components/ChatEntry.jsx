@@ -1,13 +1,13 @@
 import React from 'react';
 
 
-const ChatEntry = props => {
-  return (
-    <div>
-     check
-      <img src={props.user.avatar} alt={props.user.name} width='50'/>
-      <p>{props.user.username}</p>
-    </div>
-  );
-};
+const ChatEntry = ({user}) => (
+  <div>
+    chat Endtryalsk
+    <img src={user.avatar} alt={user.name} width='50'/>
+    <p>{user.username}</p>
+  </div>
+);
+
+
 export default ChatEntry;

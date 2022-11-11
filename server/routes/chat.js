@@ -5,7 +5,7 @@ const Chat = Router();
 
 
 
-Chat.get('/to', (req, res)=>{
+Chat.get('/', (req, res)=>{
   const id = req.user._id;
   getUsersMsg(id, (msgs)=> {
     if (msgs) {

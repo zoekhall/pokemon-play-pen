@@ -3,6 +3,7 @@ const Pokedex = Router();
 const axios = require('axios');
 const url = 'https://pokeapi.co/api/v2/pokemon/';
 
+//GET ALL POKEMON NAMES
 Pokedex.get('/', (req, res) => {
   axios
     .get(`${url}?limit=151`)
@@ -17,11 +18,13 @@ Pokedex.get('/', (req, res) => {
     });
 });
 
+//GET ONE POKEMAN OBJECT
 Pokedex.get('/:pokemonId', (req, res) => {
   const { pokemonId } = req.params;
 
-  axios.get(`${url}${pokemonId}/`)
-    .then(pokemon => {
+  axios
+    .get(`${url}${pokemonId}/`)
+    .then((pokemon) => {
       console.log(`Request for ${pokemon.data.name} Successful`);
       res.status(202);
       res.send(pokemon.data);
@@ -32,6 +35,21 @@ Pokedex.get('/:pokemonId', (req, res) => {
     });
 });
 
+//GET POKEMON CARDS
+Pokedex.get('/card/:pokemonName', (req, res) => {
+  const { pokemonName } = req.params;
 
+  axios
+    .get(`https://api.pokemontcg.io/v2/cards?q=name:*${pokemonName}*`)
+    .then((pokemon) => {
+      console.log(`Request for ${pokemonName} Cards Successful`);
+      res.status(202);
+      res.send(pokemon.data);
+    })
+    .catch((err) => {
+      console.log('Request for Pokemon Card Data FAILED:', err);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = { Pokedex };

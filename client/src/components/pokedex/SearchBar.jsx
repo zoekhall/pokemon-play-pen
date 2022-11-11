@@ -12,7 +12,7 @@ const SearchBar = () => {
     </div>
   );
 
-
+//ZOE IS FRUSTATED!!!
 };
 
 export default SearchBar;

@@ -16,7 +16,6 @@ const MessageList = () => {
   };
 
 
-
   useEffect(()=>{ getInbox(); }, []);
 
 

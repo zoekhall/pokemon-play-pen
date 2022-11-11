@@ -25,7 +25,7 @@ User.get('/find', (req, res)=>{
 User.get('/findUserId:id', (req, res) => { // get the user at the specified id
   findUserById(req.params.id, (userInfo)=>{
     if (userInfo) {
-      res.status(200).send(userInfo);
+      res.status(200).send({data: [userInfo, req.user._id]});
     } else {
       res.sendStatus(404);
     }

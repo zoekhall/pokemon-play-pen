@@ -9,7 +9,7 @@ Chat.get('/', (req, res)=>{
   const id = req.user._id;
   getUsersMsg(id, (msgs)=> {
     if (msgs) {
-      res.status(200).send(msgs.reverse());
+      res.status(200).send(msgs.reverse().splice(0, 10));
     } else {
       res.sendStatus(404);
     }

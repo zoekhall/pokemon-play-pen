@@ -74,10 +74,11 @@ img {
      -webkit-text-stroke-width: 2px;
      -webkit-text-stroke-color: #000;
      display: flex;
+     margin: auto;
      justify-content: center;
 }
 
-/* Animation */
+
 @keyframes blink {
      from {
           background: #eee;
@@ -89,7 +90,7 @@ img {
 }
 
 @keyframes shake {
-     0 {
+     0% {
           transform: translate(0, 0) rotate(0);
      }
 

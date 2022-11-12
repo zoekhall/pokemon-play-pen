@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import Avatar from '@mui/material/Avatar';
 
 /** CURRENT ISSUE
  * Profile data only rendering after making an edit
@@ -52,7 +53,14 @@ const InfoSect = () => {
   const descRef = useRef(null); // the refrence for the description edit text
   return (
     <div>
-      <img alt={profile.firstName} width='100px' src={profile.avatar} referrerpolicy="no-referrer" /> <br />
+      {/* <img alt={profile.firstName} width='100px' src={profile.avatar} referrerpolicy="no-referrer" /> <br /> */}
+
+      <Avatar
+        alt={profile.firstName}
+        src={profile.avatar}
+        sx={{ width: 100, height: 100 }}
+        referrerpolicy="no-referrer"
+      />
 
       <button onClick={() => setInputVals(() => ({ clicked: true }))}>Edit Profile</button> <br />
 

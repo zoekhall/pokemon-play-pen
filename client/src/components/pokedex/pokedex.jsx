@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Poke from './Poke.jsx';
 import PokeInfo from './PokeInfo.jsx';
 import Cards from './Cards.jsx';
-
+import SearchBar from './SearchBar.jsx';
 
 const Pokedex = () => {
   const [selectedPoke, setSelectedPoke] = useState({});

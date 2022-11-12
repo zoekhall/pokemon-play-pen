@@ -56,7 +56,7 @@ const NavBar = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            PokePlay-Pen
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -115,7 +115,7 @@ const NavBar = () => {
               textDecoration: 'none',
             }}
           >
-            Pokemon Play-Pen
+            PokePlay-Pen
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

@@ -1,5 +1,11 @@
 import React from 'react';
 import axios from 'axios';
+import Button from '@mui/material/button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+
 
 const CardListItem = ({ card }) => {
   // console.log('card', card);
@@ -9,16 +15,28 @@ const CardListItem = ({ card }) => {
   };
 
   return (
-    <div>
-      <h3>{card.name}</h3>
-      <img src={card.images.small} alt={`${card.name} was not found!`}></img>
-      <div>
-        <button onClick={() => { handleAddCard(card); }}>
+    <Card sx={{ maxWidth: 275 }}>
+      <h2>{card.name}</h2>
+      <CardMedia
+        component='img'
+        image={card.images.small}
+        alt={`${card.name} was not found!`}
+      />
+      <CardContent>
+      </CardContent >
+      <CardActions>
+        <Button variant='contained' onClick={() => { handleAddCard(card); }}>
           Add {card.name} to Marketplace
-        </button>
-      </div>
-    </div>
+        </Button>
+      </CardActions >
+    </Card >
   );
 };
+
+
+
+
+
+
 
 export default CardListItem;

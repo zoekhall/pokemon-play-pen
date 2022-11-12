@@ -74,7 +74,7 @@ img {
      -webkit-text-stroke-width: 2px;
      -webkit-text-stroke-color: #000;
      display: flex;
-     justify-content: center;
+     margin: auto;
 }
 
 /* Animation */
@@ -89,7 +89,7 @@ img {
 }
 
 @keyframes shake {
-     0 {
+     0% {
           transform: translate(0, 0) rotate(0);
      }
 

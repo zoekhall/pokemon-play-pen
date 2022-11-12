@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import Button from '@mui/material/button';
 
 const PokeEntry = styled.div`
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
@@ -20,7 +21,7 @@ const Contents = styled.div`
 `;
 
 const Poke = ({ selectPoke, getCards }) => {
-  const [pokedex, setPokedex] = useState([]); //array of pokemon to be rendered 
+  const [pokedex, setPokedex] = useState([]); //array of pokemon to be rendered
 
   useEffect(() => { //retrieve pokemon list and set pokedex state to that data
     axios.get('/api/pokedex')
@@ -44,9 +45,9 @@ const Poke = ({ selectPoke, getCards }) => {
         <Contents>
           <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} />
           <h4>{pokemon.name}</h4>
-          <button onClick={() => sendUserId(id)}>Add as Your Favorite</button>
-          <button onClick={() => selectPoke(id)}>View {`${pokemon.name}'s`} Stats</button>
-          <button onClick={() => getCards(pokemon.name)}>View {`${pokemon.name}'s`} Cards</button>
+          <Button variant='contained' onClick={() => sendUserId(id)}>Add as Your Favorite</Button>
+          <Button variant='contained' onClick={() => selectPoke(id)}>View {`${pokemon.name}'s`} Stats</Button>
+          <Button variant='contained' onClick={() => getCards(pokemon.name)}>View {`${pokemon.name}'s`} Cards</Button>
         </Contents>
       </PokeEntry>
     );

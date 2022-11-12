@@ -75,9 +75,10 @@ img {
      -webkit-text-stroke-color: #000;
      display: flex;
      margin: auto;
+     justify-content: center;
 }
 
-/* Animation */
+
 @keyframes blink {
      from {
           background: #eee;

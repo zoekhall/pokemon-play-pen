@@ -44,8 +44,6 @@ const Cards = ({ pokeCards, changePokeCardDisplay }) => {
                 image={card.images.small}
                 alt={`${card.name} was not found!`}
               />
-              <CardContent>
-              </CardContent >
               <CardActions>
                 <Button variant='contained' onClick={() => { handleAddCard(card); }}>
                   Add {card.name} to Marketplace

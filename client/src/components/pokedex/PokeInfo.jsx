@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from '@mui/material/button';
 
 const Contents = styled.div`
   display: grid;
@@ -14,7 +15,7 @@ const PokeInfo = ({ selectedPoke, changePokeStatus, selectedPokeId }) => {
 
   return (
     <div>
-      <button onClick={() => changePokeStatus(false)}>x</button>  
+      <Button variant='contained' onClick={() => changePokeStatus(false)}>x</Button>  
       <Contents>
         <h3>{selectedPoke.name}</h3>
         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${selectedPokeId}.png`} />

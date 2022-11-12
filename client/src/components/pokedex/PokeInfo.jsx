@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '@mui/material/button';
+import { Button } from '@mui/material';
 
 const Contents = styled.div`
   display: grid;

@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import IconButton from '@mui/material/IconButton';
+import TextField from '@mui/material/TextField';
+import SearchIcon from '@mui/icons-material/Search';
+
 
 const SearchForm = ({ setCards }) => {
 
@@ -35,14 +39,15 @@ const SearchForm = ({ setCards }) => {
   return (
     <form onSubmit={handleOnSubmit}>
       <div>
-        <input
+        <TextField
           type="text"
+          label="Search"
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
         />
-        <button>
-          Search Cards
-        </button>
+        <IconButton type='submit' variant='contained'>
+          <SearchIcon style={{ fill: 'blue' }} />
+        </IconButton>
       </div>
     </form>
   );

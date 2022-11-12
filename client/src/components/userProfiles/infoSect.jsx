@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import axios from 'axios';
 import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 /** CURRENT ISSUE
  * Profile data only rendering after making an edit
@@ -49,8 +51,9 @@ const InfoSect = () => {
   useEffect(retriveIdData, []);
 
 
-  const userRef = useRef(null); // the refrence for the username edit text
-  const descRef = useRef(null); // the refrence for the description edit text
+  const userRef = createRef(); // the refrence for the username edit text 
+  const descRef = createRef(); // the refrence for the description edit text
+
   return (
     <div>
       {/* <img alt={profile.firstName} width='100px' src={profile.avatar} referrerpolicy="no-referrer" /> <br /> */}
@@ -62,15 +65,22 @@ const InfoSect = () => {
         referrerpolicy="no-referrer"
       />
 
-      <button onClick={() => setInputVals(() => ({ clicked: true }))}>Edit Profile</button> <br />
+      <Button onClick={() => setInputVals(() => ({ clicked: true }))}>Edit Profile</Button> <br />
 
-      Your Username:  {inputVals.clicked ?
-        <div><input ref={userRef} /> </div> :
-        <div>{profile.username}</div>} <br />
+      {inputVals.clicked ?
+        <div><TextField id='outlined-uncontrolled' label='Username' defaultValue={profile.username} inputRef={userRef} /> </div> :
+        <h1>{profile.username}</h1>} <br />
 
-      Your Description: {inputVals.clicked ?
-        <div><input ref={descRef} /></div> :
-        <div>{profile.description}</div>} <br />
+      {inputVals.clicked ?
+        <div><TextField id='outlined-uncontrolled' label='Description' defaultValue={profile.description} inputRef={descRef} /></div> :
+        <h3>{profile.description}</h3>} <br />
+      
+      {inputVals.clicked ?
+        <div><Button variant='contained' onClick={() => {
+          handleClick();
+          setInputVals(() => ({ clicked: false }));
+          retriveIdData();
+        }}>Post</Button></div> : <div></div>}
 
       Your Favorite Pokemon:
       <div>
@@ -85,12 +95,6 @@ const InfoSect = () => {
       </div>
 
 
-      {inputVals.clicked ?
-        <div><button onClick={() => {
-          handleClick();
-          setInputVals(() => ({ clicked: false }));
-          retriveIdData();
-        }}>Post</button></div> : <div></div>}
 
     </div>
   );

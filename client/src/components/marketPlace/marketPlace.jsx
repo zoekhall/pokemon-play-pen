@@ -15,11 +15,14 @@ const MarketPlace = () => {
 
   return (
     <div>
-      {market.map((card) => (
-        < MarketEntries card={card} key={card._id} />
-      ))}
+      <h1>Marketplace</h1>
+      <div>
+        {market.map((card) => (
+          < MarketEntries card={card} key={card._id} />
+        ))}
+      </div>
     </div>
   );
 };
 
-export default MarketPlace; 
+export default MarketPlace;

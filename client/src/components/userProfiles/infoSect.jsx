@@ -53,6 +53,7 @@ const InfoSect = () => {
 
   const userRef = createRef(); // the refrence for the username edit text 
   const descRef = createRef(); // the refrence for the description edit text
+
   return (
     <div>
       {/* <img alt={profile.firstName} width='100px' src={profile.avatar} referrerpolicy="no-referrer" /> <br /> */}

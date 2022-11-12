@@ -49,7 +49,7 @@ const InfoSect = () => {
   useEffect(retriveIdData, []);
 
 
-  const userRef = useRef(null); // the refrence for the username edit text 
+  const userRef = useRef(null); // the refrence for the username edit text
   const descRef = useRef(null); // the refrence for the description edit text
   return (
     <div>

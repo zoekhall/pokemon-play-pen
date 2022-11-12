@@ -1,6 +1,14 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import FoundUsers from './FoundUsers.jsx';
+import TextField from '@mui/material/TextField';
+import styled from 'styled-components';
+
+
+const Input = styled.div`
+display: flex;
+justify-content: flex-end;
+`;
 
 
 const Search = () => {
@@ -16,11 +24,13 @@ const Search = () => {
 
   return (
     <div>
-      <p>Search Users: </p>
-      <input onChange={e=>{
-        setSearch(e.target.value);
-        findUser();
-      }} type="text" />
+      <Input>
+        <TextField id="outlined-basic" label="Search Users" variant="outlined"
+          onChange={e=>{
+            setSearch(e.target.value);
+            findUser();
+          }} type="text" />
+      </Input>
       {searched.map(user => (
         <FoundUsers
           user={user}

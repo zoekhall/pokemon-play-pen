@@ -89,6 +89,7 @@ const InfoSect = () => {
         <div><button onClick={() => {
           handleClick();
           setInputVals(() => ({ clicked: false }));
+          retriveIdData();
         }}>Post</button></div> : <div></div>}
 
     </div>

@@ -53,7 +53,7 @@ const Pokedex = () => {
 
   return (
     <div>
-      <h1>The Pokédex</h1>
+      <h1>The Pokédex!</h1>
       <div>
         <div>{renderView()}</div>
       </div>

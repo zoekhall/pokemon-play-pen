@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SearchForm from './searchForm.jsx';
 import CardList from './cardList.jsx';
 
-const Collection = () => {
+const deck = () => {
 
   const [cards, setCards] = useState([]);
 
@@ -15,4 +15,4 @@ const Collection = () => {
   );
 };
 
-export default Collection;
+export default deck;

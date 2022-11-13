@@ -15,7 +15,7 @@ import PokeIcon from '@mui/icons-material/CatchingPokemon';
 
 import { Outlet, Link } from 'react-router-dom';
 
-const pages = ['profile', 'inbox', 'marketPlace', 'pokedex', 'collection'];
+const pages = ['profile', 'inbox', 'marketPlace', 'pokedex', 'deck'];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

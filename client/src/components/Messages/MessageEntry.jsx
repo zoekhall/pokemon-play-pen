@@ -1,6 +1,37 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import {Avatar, Button} from '@mui/material';
+import { Send } from '@mui/icons-material';
+
+const UserMsg = styled.div`
+  display: flex;
+  gap: 50px;
+  box-shadow: 0 0 2px;
+  align-items: center;
+  padding: 2px;
+  border-radius: 5px;
+  margin: 5px;
+  padding-top: 5px;
+
+`;
+
+const UserInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  background-color: none;
+`;
+
+const Message = styled.div`
+  position: relative;
+  margin-left: 0px;
+  padding-left: 0px;
+  display: flex;
+  width: 75%;
+`;
 
 const MessageEntry = ({ msg }) => {
 
@@ -19,20 +50,27 @@ const MessageEntry = ({ msg }) => {
   }, []);
 
   return (
-    <div>
-      <p>From: {sender.username}</p>
-      <Link to={`/userProfile:${msg.sender}`}>
-        <img src={sender.avatar} alt={sender.name} referrerpolicy="no-referrer" width='50' />
-      </Link>
-
-      <p>{msg.message}</p>
+    <UserMsg>
+      <UserInfo>
+        <Link to={`/userProfile:${msg.sender}`}>
+          <Avatar
+            src={sender.avatar}
+            alt={sender.name}
+            referrerpolicy="no-referrer"
+          />
+        </Link>
+        <p>{sender.username}</p>
+      </UserInfo>
+      <Message>
+        {msg.message}
+      </Message>
       {loggedInUser !== Number(msg.sender) ?
         <Link to={'/compose:' + msg.sender} >
-          <button>Reply</button>
+          <Button variant='contained' endIcon={<Send/>}>Reply</Button>
         </Link> :
         <></>}
 
-    </div>
+    </UserMsg>
   );
 };
 export default MessageEntry;

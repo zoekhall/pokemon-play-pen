@@ -4,6 +4,7 @@ import Poke from './Poke.jsx';
 import PokeInfo from './PokeInfo.jsx';
 import Cards from './Cards.jsx';
 
+
 const Pokedex = () => {
   const [selectedPoke, setSelectedPoke] = useState({});
   const [pokeStatus, setPokeStatus] = useState(false);
